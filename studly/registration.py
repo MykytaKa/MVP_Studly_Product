@@ -1,4 +1,4 @@
-from connect_to_db import connect_to_database
+from connect_to_db.py import connect_to_database
 import re
 
 
