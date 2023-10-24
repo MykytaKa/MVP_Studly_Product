@@ -1,6 +1,14 @@
 {
     "files": [
         "mainwindow.py",
-        "form.ui"
+        "form.ui",
+        "scheduleClass.py",
+        "scheduleClass.ui",
+        "mainwindowteacher.py",
+        "mainwindowteacher.ui",
+        "scheduleClassTeacher.py",
+        "scheduleClassTeacher.ui",
+        "meetCreator.py",
+        "meetCreator.ui"
     ]
 }
