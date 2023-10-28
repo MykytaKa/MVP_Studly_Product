@@ -24,6 +24,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet(u"background-color: rgb(69, 119, 108);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -51,6 +52,9 @@ class Ui_MainWindow(object):
 
         self.scheduleButton = QPushButton(self.menuWidget)
         self.scheduleButton.setObjectName(u"scheduleButton")
+        self.scheduleButton.setStyleSheet(u"border-style: solid;\n"
+"border-width: 0px;\n"
+"color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.scheduleButton)
 
@@ -60,6 +64,9 @@ class Ui_MainWindow(object):
 
         self.lecturesButton = QPushButton(self.menuWidget)
         self.lecturesButton.setObjectName(u"lecturesButton")
+        self.lecturesButton.setStyleSheet(u"border-style: solid;\n"
+"border-width: 0px;\n"
+"color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.lecturesButton)
 
@@ -69,6 +76,9 @@ class Ui_MainWindow(object):
 
         self.teachersButton = QPushButton(self.menuWidget)
         self.teachersButton.setObjectName(u"teachersButton")
+        self.teachersButton.setStyleSheet(u"border-style: solid;\n"
+"border-width: 0px;\n"
+"color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.teachersButton)
 
@@ -78,6 +88,9 @@ class Ui_MainWindow(object):
 
         self.notesButton = QPushButton(self.menuWidget)
         self.notesButton.setObjectName(u"notesButton")
+        self.notesButton.setStyleSheet(u"border-style: solid;\n"
+"border-width: 0px;\n"
+"color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.notesButton)
 

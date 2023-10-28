@@ -9,6 +9,9 @@
         "scheduleClassTeacher.py",
         "scheduleClassTeacher.ui",
         "meetCreator.py",
-        "meetCreator.ui"
+        "meetCreator.ui",
+        "resources.qrc",
+        "meetWidget.py",
+        "consts.py"
     ]
 }

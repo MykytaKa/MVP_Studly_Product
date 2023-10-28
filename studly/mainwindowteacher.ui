@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Teacher</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(69, 119, 108);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="2" column="0">
@@ -51,6 +54,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="scheduleButton">
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+border-width: 0px;
+color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Розклад</string>
            </property>
@@ -74,6 +82,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="lecturesButton">
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+border-width: 0px;
+color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Лекції</string>
            </property>
@@ -97,6 +110,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="teachersButton">
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+border-width: 0px;
+color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Викладачі</string>
            </property>
@@ -120,6 +138,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="notesButton">
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+border-width: 0px;
+color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Нотатки</string>
            </property>

@@ -17,21 +17,21 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
-    QSpacerItem, QStatusBar, QToolBar, QVBoxLayout,
-    QWidget)
+    QSpacerItem, QStatusBar, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setStyleSheet(u"background-color: rgb(69, 119, 108);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.menuWidget = QWidget(self.centralwidget)
         self.menuWidget.setObjectName(u"menuWidget")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.menuWidget.sizePolicy().hasHeightForWidth())
@@ -45,7 +45,6 @@ class Ui_MainWindow(object):
         self.buttonsMenu.setContentsMargins(-1, -1, 0, 0)
         self.logoLabel = QLabel(self.menuWidget)
         self.logoLabel.setObjectName(u"logoLabel")
-        self.logoLabel.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.logoLabel.setAlignment(Qt.AlignCenter)
 
         self.buttonsMenu.addWidget(self.logoLabel)
@@ -142,7 +141,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addLayout(self.widgetContainer, 2, 1, 1, 1)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Minimum)
+        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
 
@@ -154,9 +153,6 @@ class Ui_MainWindow(object):
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        self.toolBar = QToolBar(MainWindow)
-        self.toolBar.setObjectName(u"toolBar")
-        MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
 
@@ -171,8 +167,7 @@ class Ui_MainWindow(object):
         self.teachersButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0456", None))
         self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0442\u0430\u0442\u043a\u0438", None))
         self.userFullname.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435 \u0406.\u041f.", None))
-        self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0433\u0440\u0443\u043f\u0430", None))
+        self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
         self.userIcon.setText(QCoreApplication.translate("MainWindow", u"ICONA", None))
-        self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
