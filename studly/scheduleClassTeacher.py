@@ -69,7 +69,7 @@ class scheduleClassTeacher(QWidget):
                                                             border-color: rgb(32, 69, 71);
                                                             border-width: 5px;
                                                             ''')
-            ### Встановлення рамки для усіх інших дат дат
+            ### Встановлення рамки для усіх інших дат
             else:
                 if(col == 0):
                     self.meetColumns[col].setStyleSheet('''border-radius: 0px;
