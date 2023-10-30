@@ -43,18 +43,91 @@ border-radius: 10px;</string>
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <item row="1" column="2">
-         <spacer name="horizontalSpacer">
+        <item row="1" column="3">
+         <widget class="QPushButton" name="dateBack">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+          </property>
+          <property name="text">
+           <string>&lt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_3">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
-            <height>20</height>
+            <width>20</width>
+            <height>13</height>
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="1" column="4">
+         <widget class="QPushButton" name="dateForward">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+          </property>
+          <property name="text">
+           <string>&gt;</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="1">
          <widget class="QPushButton" name="createMeetButton">
@@ -101,7 +174,36 @@ border-width: 2px;</string>
           </property>
          </spacer>
         </item>
-        <item row="3" column="0" colspan="3">
+        <item row="1" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="5">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="0" colspan="6">
          <layout class="QGridLayout" name="daysContainer">
           <property name="rightMargin">
            <number>9</number>
@@ -261,8 +363,8 @@ border-width: 2px;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>663</width>
-               <height>302</height>
+               <width>657</width>
+               <height>293</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
@@ -603,22 +705,6 @@ border-bottom-right-radius: 10px;</string>
            </widget>
           </item>
          </layout>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>13</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>

@@ -17,8 +17,9 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.widgetContainer.addWidget(scheduleClass())
-
+        self.currentWidget = scheduleClass()
+        self.ui.widgetContainer.addWidget(self.currentWidget)
+        self.ui.scheduleButton.clicked.connect(self.loadSchedule)
         self.ui.scheduleButton.setStyleSheet('''border-style: solid;
         border-width: 0px;
         color: rgb(239, 241, 237);''')
@@ -45,7 +46,6 @@ class MainWindow(QMainWindow):
         self.ui.teachersButton.setCursor(Qt.PointingHandCursor)
         self.ui.notesButton.setCursor(Qt.PointingHandCursor)
 
-
         self.ui.scheduleButton.clicked.connect(lambda: self.lightChosenButton(self.ui.scheduleButton))
         self.ui.lecturesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.lecturesButton))
         self.ui.teachersButton.clicked.connect(lambda: self.lightChosenButton(self.ui.teachersButton))
@@ -65,6 +65,11 @@ class MainWindow(QMainWindow):
         self.ui.lecturesButton.setFont(font)
         self.ui.teachersButton.setFont(font)
         self.ui.notesButton.setFont(font)
+
+    def loadSchedule(self):
+        self.newWidget = scheduleClass()
+        self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
+        self.currentWidget = self.newWidget
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

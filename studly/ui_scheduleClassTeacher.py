@@ -39,15 +39,45 @@ class Ui_Form(object):
         self.gridLayout_2 = QGridLayout(self.groupBox)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(-1, 0, 0, 0)
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer, 1, 2, 1, 1)
-
-        self.createMeetButton = QPushButton(self.groupBox)
-        self.createMeetButton.setObjectName(u"createMeetButton")
+        self.dateBack = QPushButton(self.groupBox)
+        self.dateBack.setObjectName(u"dateBack")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.dateBack.sizePolicy().hasHeightForWidth())
+        self.dateBack.setSizePolicy(sizePolicy)
+        self.dateBack.setMinimumSize(QSize(30, 30))
+        self.dateBack.setMaximumSize(QSize(30, 30))
+        self.dateBack.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateBack.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.dateBack, 1, 3, 1, 1)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 13, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_2.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
+
+        self.dateForward = QPushButton(self.groupBox)
+        self.dateForward.setObjectName(u"dateForward")
+        sizePolicy.setHeightForWidth(self.dateForward.sizePolicy().hasHeightForWidth())
+        self.dateForward.setSizePolicy(sizePolicy)
+        self.dateForward.setMinimumSize(QSize(30, 30))
+        self.dateForward.setMaximumSize(QSize(30, 30))
+        self.dateForward.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateForward.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.dateForward, 1, 4, 1, 1)
+
+        self.createMeetButton = QPushButton(self.groupBox)
+        self.createMeetButton.setObjectName(u"createMeetButton")
         sizePolicy.setHeightForWidth(self.createMeetButton.sizePolicy().hasHeightForWidth())
         self.createMeetButton.setSizePolicy(sizePolicy)
         self.createMeetButton.setMinimumSize(QSize(120, 30))
@@ -63,6 +93,14 @@ class Ui_Form(object):
         self.verticalSpacer_2 = QSpacerItem(20, 6, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.gridLayout_2.addItem(self.verticalSpacer_2, 2, 1, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer, 1, 2, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_2, 1, 5, 1, 1)
 
         self.daysContainer = QGridLayout()
         self.daysContainer.setObjectName(u"daysContainer")
@@ -138,7 +176,7 @@ class Ui_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 663, 302))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 657, 293))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -282,11 +320,7 @@ class Ui_Form(object):
         self.daysContainer.addWidget(self.scrollArea, 1, 1, 1, 7)
 
 
-        self.gridLayout_2.addLayout(self.daysContainer, 3, 0, 1, 3)
-
-        self.verticalSpacer_3 = QSpacerItem(20, 13, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.gridLayout_2.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
+        self.gridLayout_2.addLayout(self.daysContainer, 3, 0, 1, 6)
 
 
         self.horizontalLayout.addWidget(self.groupBox)
@@ -303,6 +337,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.groupBox.setTitle("")
+        self.dateBack.setText(QCoreApplication.translate("Form", u"<", None))
+        self.dateForward.setText(QCoreApplication.translate("Form", u">", None))
         self.createMeetButton.setText(QCoreApplication.translate("Form", u"\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0437\u0443\u0441\u0442\u0440\u0456\u0447", None))
         self.day2Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.day5Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))

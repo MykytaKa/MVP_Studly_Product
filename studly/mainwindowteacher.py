@@ -64,7 +64,6 @@ class MainWindowTeacher(QMainWindow):
         self.ui.teachersButton.setFont(font)
         self.ui.notesButton.setFont(font)
 
-
     def loadSchedule(self):
         self.newWidget = scheduleClassTeacher(mainWindow=self)
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
