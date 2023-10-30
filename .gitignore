@@ -38,6 +38,7 @@ Thumbs.db
 
 # qtcreator generated files
 *.pro.user*
+*.user
 CMakeLists.txt.user*
 *.pyproject.user
 rc_resources.py
