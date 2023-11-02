@@ -1,25 +1,36 @@
 import re
-from connect_to_db import connect_to_database
+from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow, QLineEdit
 from PySide6.QtCore import QTimer, QSettings
-from ui_login import Ui_MainWindow
-from mainwindow import MainWindow
+from login.ui_login import Ui_MainWindow
+from mainwindowstudent import MainWindowStudent
+from mainwindowteacher import MainWindowTeacher
 
+#from mainwindow import MainWindow
+
+from registration.registration import RegistrationWindow
+
+# Important:
+# You need to run the following command to generate the ui_form.py file
+#     pyside6-uic user_acc.ui -o ui_user_acc.py, or
+#     pyside2-uic form.ui -o ui_form.py
 
 class Login(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setFixedSize(600, 600)
         self.load_settings()
 
         self.ui.loginButton.clicked.connect(self.loginUser)
         self.ui.show.stateChanged.connect(self.show_hide_password)
-        self.ui.loginEdit.textChanged.connect(self.change_loginEdit_style)
-        self.ui.passwordEdit.textChanged.connect(self.change_passwordEdit_style)
+        self.ui.loginEdit.textChanged.connect(lambda: self.change_widget_style(self.ui.loginEdit))
+        self.ui.passwordEdit.textChanged.connect(lambda: self.change_widget_style(self.ui.passwordEdit))
 
-        self.redStyle = "border-style: solid; border-width: 2px; border-color: rgb(69, 119, 108); background-color: rgba(69, 119, 108, 125);"
+        self.ui.registrationlLabel.mousePressEvent = self.open_registration
+
+        self.defaultStyle = "border-style: solid; border-width: 2px; border-color: rgb(69, 119, 108); background-color: rgba(69, 119, 108, 125); border-radius: 5px;"
+        self.redStyle = "border: 2px solid red; border-style: solid; background-color: rgba(69, 119, 108, 125); border-radius: 5px;"
 
     def load_settings(self):
         settings = QSettings('studly', 'studly')
@@ -34,13 +45,8 @@ class Login(QMainWindow):
             self.ui.rememberUser.setChecked(True)
 
 
-
-    def change_loginEdit_style(self):
-        self.ui.loginEdit.setStyleSheet(self.redStyle)
-
-    def change_passwordEdit_style(self):
-        self.ui.passwordEdit.setStyleSheet(self.redStyle)
-
+    def change_widget_style(self, widget):
+        widget.setStyleSheet(self.defaultStyle)
 
     def show_hide_password(self, state):
         if state == 2:
@@ -57,31 +63,33 @@ class Login(QMainWindow):
         elif re.match(r'^\+\d{1,3}\d{9}$', identifier):
             cursor.execute('SELECT * FROM users WHERE phone_number = ?', (identifier,))
         else:
-            self.ui.loginEdit.setStyleSheet("border: 2px solid red; border-style: solid; background-color: rgba(69, 119, 108, 125);")
-            return 'Incorrect email/phone format'
+            self.ui.loginEdit.setStyleSheet(self.redStyle)
+            return 'Некоректний формат пошти/телефону.'
 
         user = cursor.fetchone()
 
         if user is not None:
             # Successful authentication
-            if user[7] == password:  # user[7] - password from DB
+            print(user[8])
+            if user[8] == password:  # user[7] - password from DB
                 user_data = {
                     'user_id': user[0],
                     'first_name': user[1],
                     'last_name': user[2],
-                    'way_to_photo': user[3],
-                    'account_description': user[4],
-                    'phone_number': user[5],
-                    'email': user[6],
-                    'status': user[8]
+                    'patronymic': user[3],
+                    'way_to_photo': user[4],
+                    'account_description': user[5],
+                    'phone_number': user[6],
+                    'email': user[7],
+                    'status': user[9]
                 }
                 return user_data
             # Incorrect password
             else:
-                return 'Incorrect password'
+                return 'Неправильний пароль! Спробуйте знову.'
         # Unknown user
         else:
-            return 'User with that email/phone cannot be found.'
+            return 'Користувач з цією поштою/телефоном не знайдений!'
 
 
     def loginUser(self):
@@ -102,13 +110,23 @@ class Login(QMainWindow):
             ###################################################################################
             print(f'Successful authentication, welcome {authentication_result["first_name"]}!')
             ###################################################################################
+            print(f'{authentication_result}')
             self.close()
-            self.wind = MainWindow()
-            self.wind.show()
+
+            if authentication_result["status"] == 'teacher':
+                self.appWindow = MainWindowTeacher()
+
+            elif authentication_result["status"] == 'student':
+                self.appWindow = MainWindowStudent()
+
+            else:
+                print('error')
+                return
+
+            self.appWindow.show()
 
         else:
-            print(f'{authentication_result}')
-            self.ui.passwordEdit.setStyleSheet("border: 2px solid red; border-style: solid; background-color: rgba(69, 119, 108, 125);")
+            self.ui.passwordEdit.setStyleSheet(self.redStyle)
             self.ui.errorLabel.setText(f'{authentication_result}')
             self.timer = QTimer()
             self.timer.setInterval(3000)
@@ -118,5 +136,24 @@ class Login(QMainWindow):
     def hideErrorLabel(self):
         self.ui.errorLabel.setText('')
         self.timer.stop()
+
+    def open_registration(self, event):
+        self.registration = RegistrationWindow()
+        self.registration.show()
+        self.hide()
+        self.registration.ui.returnButton.clicked.connect(self.return_to_login)
+#        self.registration.window.ui.registerButton.clicked.connect(self.registration)
+
+
+    def return_to_login(self):
+        self.registration.close()
+        self.show()
+
+
+
+    def open_login_window(self):
+        # Используйте QTimer для асинхронного открытия окна Login
+        QTimer.singleShot(0, self.login_window.show)
+
 
 
