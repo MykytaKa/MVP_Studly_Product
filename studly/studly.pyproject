@@ -1,6 +1,26 @@
 {
     "files": [
+        "main.py",
         "mainwindow.py",
-        "form.ui"
+        "DB/connect_to_db.py",
+        "img/img.qrc",
+        "login/login.py",
+        "login/login.ui",
+        "registration/registration.py",
+        "registration/registration.ui",
+        "registration/stud_registration.ui",
+        "registration/teach_registration.ui",
+        "mainwindowstudent.py",
+        "mainwindowstudent.ui",
+        "schedule/scheduleClass.py",
+        "schedule/scheduleClass.ui",
+        "mainwindowteacher.py",
+        "mainwindowteacher.ui",
+        "schedule/scheduleClassTeacher.py",
+        "schedule/scheduleClassTeacher.ui",
+        "schedule/meetCreator.py",
+        "schedule/meetCreator.ui",
+        "schedule/meetWidget.py",
+        "consts.py"
     ]
 }
