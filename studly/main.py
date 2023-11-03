@@ -20,8 +20,7 @@ from login.login import Login
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    myWidget = Login()
+    login = Login()
 
-    myWidget.show()
-
+    login.show()
     sys.exit(app.exec())
