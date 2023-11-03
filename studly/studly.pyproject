@@ -1,7 +1,6 @@
 {
     "files": [
         "main.py",
-        "mainwindow.py",
         "DB/connect_to_db.py",
         "img/img.qrc",
         "login/login.py",
@@ -21,6 +20,9 @@
         "schedule/meetCreator.py",
         "schedule/meetCreator.ui",
         "schedule/meetWidget.py",
-        "consts.py"
+        "consts.py",
+        "img/rc_img.py",
+        "login/ui_login.py",
+        "login/rc_img.py"
     ]
 }

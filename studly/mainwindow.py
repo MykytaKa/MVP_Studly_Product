@@ -50,6 +50,12 @@ class MainWindow(QMainWindow):
         self.ui.teachersButton.clicked.connect(lambda: self.lightChosenButton(self.ui.teachersButton))
         self.ui.notesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.notesButton))
 
+
+    def loadSchedule(self):
+        newWidget = scheduleClass()
+        self.ui.widgetContainer.replaceWidget(self.currentWidget, newWidget)
+        self.currentWidget = newWidget
+
     def lightChosenButton(self, button):
         self.unLightButtons()
         font = QFont()
@@ -65,10 +71,7 @@ class MainWindow(QMainWindow):
         self.ui.teachersButton.setFont(font)
         self.ui.notesButton.setFont(font)
 
-    def loadSchedule(self):
-        self.newWidget = scheduleClass()
-        self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
-        self.currentWidget = self.newWidget
+
 
 #if __name__ == "__main__":
 #    app = QApplication(sys.argv)
