@@ -15,15 +15,21 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
+<<<<<<< HEAD
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
     QSpacerItem, QStatusBar, QVBoxLayout, QWidget)
+=======
+from PySide6.QtWidgets import (QApplication, QMainWindow, QMenuBar, QPushButton,
+    QSizePolicy, QStatusBar, QWidget)
+>>>>>>> 70db5f9e362ee374a78b22c8efd63a4d15d080ab
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+<<<<<<< HEAD
         MainWindow.setStyleSheet(u"background-color: rgb(69, 119, 108);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -145,6 +151,19 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
 
+=======
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.pushButton = QPushButton(self.centralwidget)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(120, 150, 80, 24))
+        self.pushButton_2 = QPushButton(self.centralwidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(390, 180, 80, 24))
+        self.pushButton_3 = QPushButton(self.centralwidget)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setGeometry(QRect(320, 290, 80, 24))
+>>>>>>> 70db5f9e362ee374a78b22c8efd63a4d15d080ab
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -160,6 +179,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
+<<<<<<< HEAD
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Student", None))
         self.logoLabel.setText(QCoreApplication.translate("MainWindow", u"STUDLY", None))
         self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u043e\u0437\u043a\u043b\u0430\u0434", None))
@@ -169,5 +189,11 @@ class Ui_MainWindow(object):
         self.userFullname.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435 \u0406.\u041f.", None))
         self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
         self.userIcon.setText(QCoreApplication.translate("MainWindow", u"ICONA", None))
+=======
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+>>>>>>> 70db5f9e362ee374a78b22c8efd63a4d15d080ab
     # retranslateUi
 
