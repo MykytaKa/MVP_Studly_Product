@@ -6,6 +6,7 @@ from schedule.meetCreator import meetCreator
 from schedule.meetWidget import meetWidget
 from consts import translatedMonth, weekDayCoefficient
 
+
 class scheduleClassTeacher(QWidget):
     def __init__(self, mainWindow=None, parent=None):
         super().__init__(parent)

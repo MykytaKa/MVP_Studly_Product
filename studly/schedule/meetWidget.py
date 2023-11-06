@@ -2,6 +2,7 @@
 #from PySide6.QtCore import
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout, QSizePolicy
 
+
 class meetWidget(QWidget):
     def __init__(self, subjectName = None, meetTime = None, teacherName = None, parent = None):
         super().__init__(parent)
@@ -14,5 +15,3 @@ class meetWidget(QWidget):
         self.setLayout(self.widgetLayout)
 
         self.setStyleSheet('background-color: rgb(255, 255, 255); border-radius: 0px;')
-
-

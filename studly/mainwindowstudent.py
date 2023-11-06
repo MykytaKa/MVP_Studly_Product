@@ -8,6 +8,7 @@ from PySide6.QtCore import Qt
 #     pyside2-uic form.ui -o ui_form.py
 from ui_mainwindowstudent import Ui_MainWindow
 
+
 class MainWindowStudent(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -44,7 +45,6 @@ class MainWindowStudent(QMainWindow):
         self.ui.teachersButton.setCursor(Qt.PointingHandCursor)
         self.ui.notesButton.setCursor(Qt.PointingHandCursor)
 
-
         self.ui.scheduleButton.clicked.connect(lambda: self.lightChosenButton(self.ui.scheduleButton))
         self.ui.lecturesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.lecturesButton))
         self.ui.teachersButton.clicked.connect(lambda: self.lightChosenButton(self.ui.teachersButton))
@@ -70,10 +70,3 @@ class MainWindowStudent(QMainWindow):
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
         self.currentWidget = self.newWidget
 
-#if __name__ == "__main__":
-#    app = QApplication(sys.argv)
-#    widget = MainWindow()
-#    window2 = MainWindowTeacher()
-#    widget.show()
-#    window2.show()
-#    sys.exit(app.exec())
