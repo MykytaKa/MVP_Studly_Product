@@ -1,10 +1,9 @@
-# This Python file uses the following encoding: utf-8
-#from PySide6 import QtCore
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QMainWindow
 from ui_mainwindowteacher import Ui_MainWindow
 from schedule.scheduleClassTeacher import scheduleClassTeacher
 from PySide6.QtCore import Qt
+
 
 class MainWindowTeacher(QMainWindow):
     def __init__(self, parent=None):

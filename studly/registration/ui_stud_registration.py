@@ -62,13 +62,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_3)
 
-        self.errorLabel = QLabel(self.widget)
-        self.errorLabel.setObjectName(u"errorLabel")
-        self.errorLabel.setStyleSheet(u"color: rgb(0, 255, 0);")
-        self.errorLabel.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout.addWidget(self.errorLabel)
-
         self.label_2 = QLabel(self.widget)
         self.label_2.setObjectName(u"label_2")
 
@@ -152,9 +145,8 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
-        self.errorLabel.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0406\u043d\u0441\u0442\u0438\u0442\u0443\u0442", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u043f\u0430", None))
         self.registerButton.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u0442\u0438\u0441\u044f", None))

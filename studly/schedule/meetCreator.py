@@ -3,6 +3,7 @@ from PySide6.QtCore import Qt
 from PySide6 import QtWidgets
 from schedule.ui_meetCreator import Ui_Form
 
+
 class meetCreator(QtWidgets.QWidget):
     def __init__(self, mainWindow=None, parent=None):
         super().__init__(parent)
@@ -51,6 +52,3 @@ class meetCreator(QtWidgets.QWidget):
         self.mainWindow.setDisabled(False)
         print('Close')
         event.accept()
-
-
-
