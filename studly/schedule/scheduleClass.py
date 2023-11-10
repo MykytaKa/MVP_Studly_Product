@@ -90,8 +90,3 @@ class scheduleClass(QWidget):
     def moveDateForward(self):
         self.dateMovement += 7
         self.setDates()
-
-
-    def convertDate(self, englishDate):
-        day, englishMonth = englishDate.split(' ')
-        return f'{day} {translatedMonth[englishMonth]}'

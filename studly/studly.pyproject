@@ -26,6 +26,9 @@
         "login/rc_img.py",
         "schedule/ui_meetCreator.py",
         "schedule/ui_scheduleClass.py",
-        "schedule/ui_scheduleClassTeacher.py"
+        "schedule/ui_scheduleClassTeacher.py",
+        "notes/NotesClass.py",
+        "notes/NotesClass.ui",
+        "notes/ui_notesClass.py"
     ]
 }
