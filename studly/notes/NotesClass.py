@@ -8,7 +8,6 @@ from notes.ui_notesClass import Ui_Form
 class NotesWidget(QWidget):
     # Сигнал, задля подальшої роботи із кліком на вікно
     clicked = Signal()
-    closed = Signal()
 
     def __init__(self, title, description='', parent=None):
         super().__init__(parent)
@@ -101,9 +100,6 @@ class NotesWidget(QWidget):
     def resizeEvent(self, event):
         self.setVisibleText(event)
 
-    def closeEvent(self, event):
-        self.closed.emit()
-
 # Основний віджет вікна "Нотатки"
 class NotesWindow(QWidget):
     def __init__(self, parent=None):
@@ -140,15 +136,19 @@ class NotesWindow(QWidget):
         # Connect задля того, аби при шукати по назві необхідні нотатки
         self.ui.findEdit.textChanged.connect(self.vievFoundNotes)
 
+    # Метод для приховування усіх нотатків
     def hideAllNotes(self):
         for note in self.notesList:
             note.hide()
 
+    # Метод для відображення усіх нотатків
     def showAllNotes(self):
         for note in self.notesList:
             note.show()
 
+    # Метод задля відображення лише необхідних нотатків
     def vievFoundNotes(self):
+        # Відображаємо усі нотатки, якщо поле для запитів пусте
         if self.ui.findEdit.text() == '':
             self.showAllNotes()
         else:
@@ -176,9 +176,11 @@ class NotesWindow(QWidget):
             self.ui.notesContainer.removeWidget(note)
             del self.notesList[index]
 
+    # Збереження тексту
     def saveText(self):
         self.currentNoteText = self.ui.descriptionEdit.toHtml()
 
+    # Метод задля відміни усіх змін та повернення до тексу, який останій збережено
     def cancelSaving(self):
         self.ui.descriptionEdit.clear()
         self.ui.descriptionEdit.insertHtml(self.currentNoteText)
@@ -203,6 +205,7 @@ class NotesWindow(QWidget):
         self.ui.insideWidget.hide()
         self.ui.mainWidget.show()
 
+    # Встановити жирним виділений тест
     def setSelectedTextBold(self):
         self.cursor = self.ui.descriptionEdit.textCursor()
         format = self.cursor.charFormat()
@@ -218,6 +221,7 @@ class NotesWindow(QWidget):
         self.cursor.mergeCharFormat(format)
         self.ui.descriptionEdit.setTextCursor(self.cursor)
 
+    # Встановити підкресленним виділений тест
     def setSelectedTextUnderline(self):
         self.cursor = self.ui.descriptionEdit.textCursor()
         format = self.cursor.charFormat()
@@ -233,6 +237,7 @@ class NotesWindow(QWidget):
         self.cursor.mergeCharFormat(format)
         self.ui.descriptionEdit.setTextCursor(self.cursor)
 
+    # Встановити курсивним виділений тест
     def setSelectedTextItalic(self):
         self.cursor = self.ui.descriptionEdit.textCursor()
         format = self.cursor.charFormat()
@@ -248,6 +253,7 @@ class NotesWindow(QWidget):
         self.cursor.mergeCharFormat(format)
         self.ui.descriptionEdit.setTextCursor(self.cursor)
 
+    # Встановити розмір виділеного тесту
     def changeFontSize(self, value):
         self.cursor = self.ui.descriptionEdit.textCursor()
         format = self.cursor.charFormat()
@@ -264,6 +270,7 @@ class NotesWindow(QWidget):
             self.cursor.setCharFormat(format)
             self.ui.descriptionEdit.setTextCursor(self.cursor)
 
+    # Встановити вирівнювання виділеного тесту
     def setAlignment(self, alignment):
         self.cursor = self.ui.descriptionEdit.textCursor()
 #        char_format = self.cursor.charFormat()
