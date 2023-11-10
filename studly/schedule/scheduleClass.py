@@ -5,6 +5,7 @@ from schedule.ui_scheduleClass import Ui_Form
 from datetime import datetime, timedelta
 from consts import translatedMonth, weekDayCoefficient
 
+
 class scheduleClass(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)

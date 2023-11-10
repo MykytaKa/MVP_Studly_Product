@@ -1,10 +1,10 @@
-# This Python file uses the following encoding: utf-8
-#from PySide6 import QtCore
 from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QMessageBox
 from ui_mainwindowteacher import Ui_MainWindow
+from notes.NotesClass import NotesWindow
 from schedule.scheduleClassTeacher import scheduleClassTeacher
 from PySide6.QtCore import Qt
+
 
 class MainWindowTeacher(QMainWindow):
     def __init__(self, parent=None):
@@ -13,7 +13,8 @@ class MainWindowTeacher(QMainWindow):
         self.ui.setupUi(self)
         self.currentWidget = scheduleClassTeacher(mainWindow=self)
         self.ui.widgetContainer.addWidget(self.currentWidget)
-        self.ui.scheduleButton.clicked.connect(self.loadSchedule)
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(scheduleClassTeacher()))
+        self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
         self.currentWidget.ui.createMeetButton.clicked.connect(self.setWindowDisabled)
         self.ui.scheduleButton.setStyleSheet('''border-style: solid;
                                                 border-width: 0px;
@@ -64,9 +65,10 @@ class MainWindowTeacher(QMainWindow):
         self.ui.teachersButton.setFont(font)
         self.ui.notesButton.setFont(font)
 
-
-    def loadSchedule(self):
-        self.newWidget = scheduleClassTeacher(mainWindow=self)
+    def loadSection(self, section):
+        self.currentWidget.close()
+        self.newWidget = section
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
         self.currentWidget = self.newWidget
-        self.currentWidget.ui.createMeetButton.clicked.connect(self.setWindowDisabled)
+        if isinstance(section, scheduleClassTeacher):
+            self.currentWidget.ui.createMeetButton.clicked.connect(self.setWindowDisabled)

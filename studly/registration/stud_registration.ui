@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Реєстрація</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(32, 69, 71);</string>
@@ -91,19 +91,6 @@ border-radius: 20px;
              </property>
              <property name="text">
               <string>Реєстрація</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="errorLabel">
-             <property name="styleSheet">
-              <string notr="true">color: rgb(0, 255, 0);</string>
-             </property>
-             <property name="text">
-              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

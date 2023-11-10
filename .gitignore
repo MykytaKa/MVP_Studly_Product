@@ -74,5 +74,4 @@ CMakeLists.txt.user*
 
 venv/
 __pycache__/
-
-studly/studly.pyproject.user
+.idea/

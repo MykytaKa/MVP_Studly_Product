@@ -5,15 +5,8 @@ from PySide6.QtCore import QTimer, QSettings
 from login.ui_login import Ui_MainWindow
 from mainwindowstudent import MainWindowStudent
 from mainwindowteacher import MainWindowTeacher
-
-#from mainwindow import MainWindow
-
 from registration.registration import RegistrationWindow
 
-# Important:
-# You need to run the following command to generate the ui_form.py file
-#     pyside6-uic user_acc.ui -o ui_user_acc.py, or
-#     pyside2-uic form.ui -o ui_form.py
 
 class Login(QMainWindow):
     def __init__(self, parent=None):
@@ -22,15 +15,19 @@ class Login(QMainWindow):
         self.ui.setupUi(self)
         self.load_settings()
 
-        self.ui.loginButton.clicked.connect(self.loginUser)
+        self.ui.loginButton.clicked.connect(self.login_user)
         self.ui.show.stateChanged.connect(self.show_hide_password)
-        self.ui.loginEdit.textChanged.connect(lambda: self.change_widget_style(self.ui.loginEdit))
-        self.ui.passwordEdit.textChanged.connect(lambda: self.change_widget_style(self.ui.passwordEdit))
+
+        widgets = [self.ui.loginEdit, self.ui.passwordEdit]
+        for widget in widgets:
+            widget.textChanged.connect(lambda: self.change_widget_style(widget))
 
         self.ui.registrationlLabel.mousePressEvent = self.open_registration
 
-        self.defaultStyle = "border-style: solid; border-width: 2px; border-color: rgb(69, 119, 108); background-color: rgba(69, 119, 108, 125); border-radius: 5px;"
-        self.redStyle = "border: 2px solid red; border-style: solid; background-color: rgba(69, 119, 108, 125); border-radius: 5px;"
+        self.defaultStyle = ("border-style: solid; border-width: 2px; border-color: rgb(69, 119, 108); "
+                             "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
+        self.redStyle = ("border: 2px solid red; border-style: solid; "
+                         "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
 
     def load_settings(self):
         settings = QSettings('studly', 'studly')
@@ -41,9 +38,8 @@ class Login(QMainWindow):
         self.ui.loginEdit.setText(email)
         self.ui.passwordEdit.setText(password)
 
-        if self.ui.loginEdit.text() != '' and  self.ui.passwordEdit.text() != '':
+        if self.ui.loginEdit.text() != '' and self.ui.passwordEdit.text() != '':
             self.ui.rememberUser.setChecked(True)
-
 
     def change_widget_style(self, widget):
         widget.setStyleSheet(self.defaultStyle)
@@ -89,12 +85,11 @@ class Login(QMainWindow):
                 return 'Неправильний пароль! Спробуйте знову.'
         # Unknown user
         else:
-            return 'Користувач з цією поштою/телефоном не знайдений!'
+            return 'Користувач з цими даними не знайдений!'
 
-
-    def loginUser(self):
-        email_phone = self.ui.loginEdit.text()  # Получить содержимое QLineEdit loginEdit
-        pswrd = self.ui.passwordEdit.text()  # Получить содержимое QLineEdit passwordEdit
+    def login_user(self):
+        email_phone = self.ui.loginEdit.text()
+        pswrd = self.ui.passwordEdit.text()
         authentication_result = self.authenticate_user(email_phone, pswrd)
 
         if isinstance(authentication_result, dict):
@@ -107,10 +102,10 @@ class Login(QMainWindow):
                 settings.setValue('user/email', '')
                 settings.setValue('user/password', '')
 
-            ###################################################################################
+            # To logging
             print(f'Successful authentication, welcome {authentication_result["first_name"]}!')
-            ###################################################################################
             print(f'{authentication_result}')
+
             self.close()
 
             if authentication_result["status"] == 'teacher':
@@ -130,10 +125,10 @@ class Login(QMainWindow):
             self.ui.errorLabel.setText(f'{authentication_result}')
             self.timer = QTimer()
             self.timer.setInterval(3000)
-            self.timer.timeout.connect(self.hideErrorLabel)
+            self.timer.timeout.connect(self.hide_error_label)
             self.timer.start()
 
-    def hideErrorLabel(self):
+    def hide_error_label(self):
         self.ui.errorLabel.setText('')
         self.timer.stop()
 
@@ -142,18 +137,24 @@ class Login(QMainWindow):
         self.registration.show()
         self.hide()
         self.registration.ui.returnButton.clicked.connect(self.return_to_login)
-#        self.registration.window.ui.registerButton.clicked.connect(self.registration)
 
+        self.registration.ui.nextButton.clicked.connect(self.connect_butt)
+
+    def connect_butt(self):
+        if self.registration.success:
+            self.registration.success = False
+            self.registration.window.ui.registerButton.clicked.connect(self.open_login_window)
 
     def return_to_login(self):
         self.registration.close()
         self.show()
 
-
-
     def open_login_window(self):
-        # Используйте QTimer для асинхронного открытия окна Login
-        QTimer.singleShot(0, self.login_window.show)
+        if self.registration.success:
+            self.show()
+            self.registration.success = False
+            self.ui.errorLabel.setStyleSheet('color: rgb(32, 69, 71)')
+            self.ui.errorLabel.setText('Успішна реєстрація!\nНатисніть "Увійти", щоб продовжити.')
 
-
-
+            self.ui.loginEdit.setText(self.registration.user['email'])
+            self.ui.passwordEdit.setText(self.registration.user['password'])

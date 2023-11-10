@@ -20,6 +20,7 @@
         "schedule/meetCreator.py",
         "schedule/meetCreator.ui",
         "schedule/meetWidget.py",
+<<<<<<< HEAD
         "consts.py",
         "img/rc_img.py",
         "login/ui_login.py",
@@ -30,5 +31,8 @@
         "notes/NotesClass.py",
         "notes/NotesClass.ui",
         "notes/ui_notesClass.py"
+=======
+        "consts.py"
+>>>>>>> 6ac8b8db4506940c8666230c97c9e3eaaa3e1dca
     ]
 }
