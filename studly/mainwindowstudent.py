@@ -1,4 +1,5 @@
 from schedule.scheduleClass import scheduleClass
+from notes.NotesClass import NotesWindow
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtGui import QFont
 from PySide6.QtCore import Qt
@@ -17,7 +18,8 @@ class MainWindowStudent(QMainWindow):
 
         self.currentWidget = scheduleClass()
         self.ui.widgetContainer.addWidget(self.currentWidget)
-        self.ui.scheduleButton.clicked.connect(self.loadSchedule)
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(scheduleClass()))
+        self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
 
         self.ui.scheduleButton.setStyleSheet('''border-style: solid;
         border-width: 0px;
@@ -65,8 +67,9 @@ class MainWindowStudent(QMainWindow):
         self.ui.teachersButton.setFont(font)
         self.ui.notesButton.setFont(font)
 
-    def loadSchedule(self):
-        self.newWidget = scheduleClass()
+    def loadSection(self, section):
+        self.currentWidget.close()
+        self.newWidget = section
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
         self.currentWidget = self.newWidget
 
