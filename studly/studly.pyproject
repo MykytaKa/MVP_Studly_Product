@@ -21,11 +21,8 @@
         "schedule/meetCreator.ui",
         "schedule/meetWidget.py",
         "consts.py",
-        "img/rc_img.py",
-        "login/ui_login.py",
-        "login/rc_img.py",
-        "schedule/ui_meetCreator.py",
-        "schedule/ui_scheduleClass.py",
-        "schedule/ui_scheduleClassTeacher.py"
+        "dialog.ui",
+        "notes/NotesClass.py",
+        "notes/NotesClass.ui"
     ]
 }

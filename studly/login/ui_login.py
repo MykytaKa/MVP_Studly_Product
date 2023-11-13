@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
     QHBoxLayout, QLabel, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
     QWidget)
-
+import rc_img
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -234,7 +234,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0412\u0445\u0456\u0434", None))
-        self.studlyLabel.setText(QCoreApplication.translate("MainWindow", u"StudLy", None))
+        self.studlyLabel.setText(QCoreApplication.translate("MainWindow", u"Studly", None))
         self.errorLabel.setText("")
         self.loginLabel.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043b\u0435\u0444\u043e\u043d/Email", None))
         self.loginEdit.setInputMask("")

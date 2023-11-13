@@ -5,27 +5,30 @@ from schedule.ui_scheduleClass import Ui_Form
 from datetime import datetime, timedelta
 from consts import translatedMonth, weekDayCoefficient
 
-class scheduleClass(QWidget):
+
+class ScheduleClass(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.dateMovement = 0
-        self.labelsDate = [self.ui.day1Label, self.ui.day2Label, self.ui.day3Label, self.ui.day4Label, self.ui.day5Label, self.ui.day6Label, self.ui.day7Label]
-        self.meetColumns = [self.ui.dayColumn1, self.ui.dayColumn2, self.ui.dayColumn3, self.ui.dayColumn4, self.ui.dayColumn5, self.ui.dayColumn6, self.ui.dayColumn7]
-        self.ui.dateBack.clicked.connect(self.moveDateBack)
-        self.ui.dateForward.clicked.connect(self.moveDateForward)
-        self.setDates()
+        self.labelsDate = [self.ui.day1Label, self.ui.day2Label, self.ui.day3Label, self.ui.day4Label,
+                           self.ui.day5Label, self.ui.day6Label, self.ui.day7Label]
+        self.meetColumns = [self.ui.dayColumn1, self.ui.dayColumn2, self.ui.dayColumn3, self.ui.dayColumn4,
+                            self.ui.dayColumn5, self.ui.dayColumn6, self.ui.dayColumn7]
+        self.ui.dateBack.clicked.connect(self.move_date_back)
+        self.ui.dateForward.clicked.connect(self.move_date_forward)
+        self.set_dates()
 
-    def setDates(self):
+    def set_dates(self):
         day = int(datetime.now().strftime('%w'))
-        koeff = weekDayCoefficient[day]
-        dayDate = datetime.now() + timedelta(days=koeff+self.dateMovement)
+        coeff = weekDayCoefficient[day]
+        day_date = datetime.now() + timedelta(days=coeff+self.dateMovement)
         for col in range(7):
             label =  self.labelsDate[col]
             ### Встановлення рамки для сьогоднішньої дати
-            if(dayDate == datetime.now()):
-                if(col == 0):
+            if day_date == datetime.now():
+                if col == 0:
                     self.meetColumns[col].setStyleSheet('''background-color: rgb(120, 180, 167);
                                                             alternate-background-color: rgb(120, 180, 167);
                                                             border-style: solid;
@@ -35,7 +38,7 @@ class scheduleClass(QWidget):
                                                             border-top-left-radius: 10px;
                                                             border-bottom-left-radius: 10px;}
                                                             ''')
-                elif(col == 6):
+                elif col == 6:
                     self.meetColumns[col].setStyleSheet('''background-color: rgb(120, 180, 167);
                                                             alternate-background-color: rgb(120, 180, 167);
                                                             border-radius: 0px;
@@ -55,14 +58,14 @@ class scheduleClass(QWidget):
                                                             ''')
             ### Встановлення рамки для усіх інших дат дат
             else:
-                if(col == 0):
+                if col == 0:
                     self.meetColumns[col].setStyleSheet('''border-radius: 0px;
                                                             background-color: rgb(120, 180, 167);
                                                             alternate-background-color: rgb(120, 180, 167);
                                                             border-color: rgb(120, 180, 167);
                                                             border-top-left-radius: 10px;
                                                             border-bottom-left-radius: 10px;''')
-                elif(col == 6):
+                elif col == 6:
                     self.meetColumns[col].setStyleSheet('''border-radius: 0px;
                                                             border-top-right-radius: 10px;
                                                             border-bottom-right-radius: 10px;
@@ -75,23 +78,18 @@ class scheduleClass(QWidget):
                                                             alternate-background-color: rgb(120, 180, 167);
                                                             border-color: rgb(120, 180, 167);''')
 
-            dayDate = self.convertDate(dayDate.strftime('%d %b'))
-            label.setText(dayDate)
-            dayDate = datetime.now() + timedelta(days=col+1+koeff+self.dateMovement)
+            day_date = self.convert_date(day_date.strftime('%d %b'))
+            label.setText(day_date)
+            day_date = datetime.now() + timedelta(days=col+1+coeff+self.dateMovement)
 
-    def convertDate(self, englishDate):
-        day, englishMonth = englishDate.split(' ')
-        return f'{day} {translatedMonth[englishMonth]}'
+    def convert_date(self, english_date):
+        day, english_month = english_date.split(' ')
+        return f'{day} {translatedMonth[english_month]}'
 
-    def moveDateBack(self):
+    def move_date_back(self):
         self.dateMovement -= 7
-        self.setDates()
+        self.set_dates()
 
-    def moveDateForward(self):
+    def move_date_forward(self):
         self.dateMovement += 7
-        self.setDates()
-
-
-    def convertDate(self, englishDate):
-        day, englishMonth = englishDate.split(' ')
-        return f'{day} {translatedMonth[englishMonth]}'
+        self.set_dates()

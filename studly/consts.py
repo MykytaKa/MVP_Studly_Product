@@ -1,4 +1,3 @@
-
 translatedMonth = {'Jan': 'Січ',
                    'Feb': 'Лют',
                    'Mar': 'Бер',
@@ -19,3 +18,4 @@ weekDayCoefficient = {0: -6,
                       4: -3,
                       5: -4,
                       6: -5}
+

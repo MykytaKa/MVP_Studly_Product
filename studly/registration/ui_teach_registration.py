@@ -61,12 +61,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.label_3)
 
-        self.successLabel = QLabel(self.widget)
-        self.successLabel.setObjectName(u"successLabel")
-        self.successLabel.setStyleSheet(u"color: rgb(255, 0, 0);")
-        self.successLabel.setAlignment(Qt.AlignCenter)
+        self.messageLabel = QLabel(self.widget)
+        self.messageLabel.setObjectName(u"messageLabel")
+        self.messageLabel.setStyleSheet(u"color: rgb(255, 0, 0);")
+        self.messageLabel.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout.addWidget(self.successLabel)
+        self.verticalLayout.addWidget(self.messageLabel)
 
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
@@ -166,9 +166,9 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
-        self.successLabel.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.messageLabel.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0441\u0430\u0434\u0430", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0406\u043d\u0441\u0442\u0438\u0442\u0443\u0442", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u0444\u0435\u0434\u0440\u0430", None))
