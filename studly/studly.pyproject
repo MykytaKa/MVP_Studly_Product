@@ -21,7 +21,6 @@
         "schedule/meetCreator.ui",
         "schedule/meetWidget.py",
         "consts.py",
-        "dialog.ui",
         "notes/NotesClass.py",
         "notes/NotesClass.ui"
     ]
