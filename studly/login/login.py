@@ -2,6 +2,7 @@ import re
 from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow, QLineEdit
 from PySide6.QtCore import QTimer, QSettings
+from PyQt5.QtGui import QPixmap
 from login.ui_login import Ui_MainWindow
 from mainwindowstudent import MainWindowStudent
 from mainwindowteacher import MainWindowTeacher
@@ -13,7 +14,10 @@ class Login(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         self.load_settings()
+
+        self.timer = None
 
         self.ui.loginButton.clicked.connect(self.login_user)
         self.ui.show.stateChanged.connect(self.show_hide_password)

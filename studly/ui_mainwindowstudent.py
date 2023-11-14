@@ -56,6 +56,9 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.scheduleButton.sizePolicy().hasHeightForWidth())
         self.scheduleButton.setSizePolicy(sizePolicy1)
+        self.scheduleButton.setStyleSheet(u"border-style: solid;\n"
+"        border-width: 0px;\n"
+"        color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.scheduleButton)
 
@@ -67,6 +70,9 @@ class Ui_MainWindow(object):
         self.lecturesButton.setObjectName(u"lecturesButton")
         sizePolicy1.setHeightForWidth(self.lecturesButton.sizePolicy().hasHeightForWidth())
         self.lecturesButton.setSizePolicy(sizePolicy1)
+        self.lecturesButton.setStyleSheet(u"border-style: solid;\n"
+"        border-width: 0px;\n"
+"        color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.lecturesButton)
 
@@ -78,6 +84,9 @@ class Ui_MainWindow(object):
         self.teachersButton.setObjectName(u"teachersButton")
         sizePolicy1.setHeightForWidth(self.teachersButton.sizePolicy().hasHeightForWidth())
         self.teachersButton.setSizePolicy(sizePolicy1)
+        self.teachersButton.setStyleSheet(u"border-style: solid;\n"
+"        border-width: 0px;\n"
+"        color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.teachersButton)
 
@@ -89,6 +98,9 @@ class Ui_MainWindow(object):
         self.notesButton.setObjectName(u"notesButton")
         sizePolicy1.setHeightForWidth(self.notesButton.sizePolicy().hasHeightForWidth())
         self.notesButton.setSizePolicy(sizePolicy1)
+        self.notesButton.setStyleSheet(u"border-style: solid;\n"
+"        border-width: 0px;\n"
+"        color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.notesButton)
 
