@@ -14,7 +14,9 @@ class RegistrationWindow(QMainWindow):
         self.ui = UIregistration()
         self.ui.setupUi(self)
 
+        self.user = {}
         self.success = False
+        self.timer = None
 
         self.ui.nextButton.clicked.connect(self.validate_all_data)
 
@@ -43,7 +45,7 @@ class RegistrationWindow(QMainWindow):
                 'teacher' if self.ui.teacherButton.isChecked() else None)
         }
 
-    ### Validations
+    # Validations
     # Check the string for text and in the DB
     @connect_to_database
     def validate_required_fields(cursor, self, email, phone):
@@ -176,7 +178,7 @@ class RegistrationWindow(QMainWindow):
         error_label.setText('')
         self.timer.stop()
 
-    ### Inserts
+    # Inserts
     @connect_to_database
     def insert_user_info(cursor, self):
         data = (self.user['first_name'], self.user['last_name'], self.user['patronymic'], self.user['phone_number'],

@@ -1,8 +1,8 @@
 from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QMainWindow, QMessageBox
+from PySide6.QtWidgets import QMainWindow
 from ui_mainwindowteacher import Ui_MainWindow
+from schedule.scheduleClassTeacher import ScheduleClassTeacher
 from notes.NotesClass import NotesWindow
-from schedule.scheduleClassTeacher import scheduleClassTeacher
 from PySide6.QtCore import Qt
 
 
@@ -11,28 +11,14 @@ class MainWindowTeacher(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.currentWidget = scheduleClassTeacher(mainWindow=self)
+
+        self.currentWidget = ScheduleClassTeacher(main_window=self)
         self.ui.widgetContainer.addWidget(self.currentWidget)
-        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(scheduleClassTeacher()))
+
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClassTeacher()))
         self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
-        self.currentWidget.ui.createMeetButton.clicked.connect(self.setWindowDisabled)
-        self.ui.scheduleButton.setStyleSheet('''border-style: solid;
-                                                border-width: 0px;
-                                                color: rgb(239, 241, 237);''')
 
-        self.ui.lecturesButton.setStyleSheet('''border-style: solid;
-                                                border-width: 0px;
-                                                color: rgb(239, 241, 237);''')
-
-        self.ui.teachersButton.setStyleSheet('''border-style: solid;
-                                                border-width: 0px;
-                                                color: rgb(239, 241, 237);''')
-
-        self.ui.notesButton.setStyleSheet('''border-style: solid;
-                                             border-width: 0px;
-                                             color: rgb(239, 241, 237);''')
-
-        self.unLightButtons()
+        self.unlight_buttons()
         font = QFont()
         font.setUnderline(True)
         self.ui.scheduleButton.setFont(font)
@@ -42,21 +28,18 @@ class MainWindowTeacher(QMainWindow):
         self.ui.teachersButton.setCursor(Qt.PointingHandCursor)
         self.ui.notesButton.setCursor(Qt.PointingHandCursor)
 
-        self.ui.scheduleButton.clicked.connect(lambda: self.lightChosenButton(self.ui.scheduleButton))
-        self.ui.lecturesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.lecturesButton))
-        self.ui.teachersButton.clicked.connect(lambda: self.lightChosenButton(self.ui.teachersButton))
-        self.ui.notesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.notesButton))
+        self.ui.scheduleButton.clicked.connect(lambda: self.light_chosen_button(self.ui.scheduleButton))
+        self.ui.lecturesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.lecturesButton))
+        self.ui.teachersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.teachersButton))
+        self.ui.notesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.notesButton))
 
-    def setWindowDisabled(self):
-        self.setDisabled(True)
-
-    def lightChosenButton(self, button):
-        self.unLightButtons()
+    def light_chosen_button(self, button):
+        self.unlight_buttons()
         font = QFont()
         font.setUnderline(True)
         button.setFont(font)
 
-    def unLightButtons(self):
+    def unlight_buttons(self):
         font = QFont()
         font.setUnderline(False)
 
@@ -70,5 +53,3 @@ class MainWindowTeacher(QMainWindow):
         self.newWidget = section
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
         self.currentWidget = self.newWidget
-        if isinstance(section, scheduleClassTeacher):
-            self.currentWidget.ui.createMeetButton.clicked.connect(self.setWindowDisabled)

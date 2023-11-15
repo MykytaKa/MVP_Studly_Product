@@ -1,4 +1,4 @@
-from schedule.scheduleClass import scheduleClass
+from schedule.scheduleClass import ScheduleClass
 from notes.NotesClass import NotesWindow
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtGui import QFont
@@ -16,28 +16,13 @@ class MainWindowStudent(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.currentWidget = scheduleClass()
+        self.currentWidget = ScheduleClass()
         self.ui.widgetContainer.addWidget(self.currentWidget)
-        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(scheduleClass()))
+
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClass()))
         self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
 
-        self.ui.scheduleButton.setStyleSheet('''border-style: solid;
-        border-width: 0px;
-        color: rgb(239, 241, 237);''')
-
-        self.ui.lecturesButton.setStyleSheet('''border-style: solid;
-        border-width: 0px;
-        color: rgb(239, 241, 237);''')
-
-        self.ui.teachersButton.setStyleSheet('''border-style: solid;
-        border-width: 0px;
-        color: rgb(239, 241, 237);''')
-
-        self.ui.notesButton.setStyleSheet('''border-style: solid;
-        border-width: 0px;
-        color: rgb(239, 241, 237);''')
-
-        self.unLightButtons()
+        self.unlight_buttons()
         font = QFont()
         font.setUnderline(True)
         self.ui.scheduleButton.setFont(font)
@@ -47,18 +32,18 @@ class MainWindowStudent(QMainWindow):
         self.ui.teachersButton.setCursor(Qt.PointingHandCursor)
         self.ui.notesButton.setCursor(Qt.PointingHandCursor)
 
-        self.ui.scheduleButton.clicked.connect(lambda: self.lightChosenButton(self.ui.scheduleButton))
-        self.ui.lecturesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.lecturesButton))
-        self.ui.teachersButton.clicked.connect(lambda: self.lightChosenButton(self.ui.teachersButton))
-        self.ui.notesButton.clicked.connect(lambda: self.lightChosenButton(self.ui.notesButton))
+        self.ui.scheduleButton.clicked.connect(lambda: self.light_chosen_button(self.ui.scheduleButton))
+        self.ui.lecturesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.lecturesButton))
+        self.ui.teachersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.teachersButton))
+        self.ui.notesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.notesButton))
 
-    def lightChosenButton(self, button):
-        self.unLightButtons()
+    def light_chosen_button(self, button):
+        self.unlight_buttons()
         font = QFont()
         font.setUnderline(True)
         button.setFont(font)
 
-    def unLightButtons(self):
+    def unlight_buttons(self):
         font = QFont()
         font.setUnderline(False)
 
@@ -72,4 +57,3 @@ class MainWindowStudent(QMainWindow):
         self.newWidget = section
         self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
         self.currentWidget = self.newWidget
-

@@ -59,6 +59,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+        border-width: 0px;
+        color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Розклад</string>
            </property>
@@ -87,6 +92,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+        border-width: 0px;
+        color: rgb(239, 241, 237);</string>
            </property>
            <property name="text">
             <string>Лекції</string>
@@ -117,6 +127,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+        border-width: 0px;
+        color: rgb(239, 241, 237);</string>
+           </property>
            <property name="text">
             <string>Викладачі</string>
            </property>
@@ -145,6 +160,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-style: solid;
+        border-width: 0px;
+        color: rgb(239, 241, 237);</string>
            </property>
            <property name="text">
             <string>Нотатки</string>

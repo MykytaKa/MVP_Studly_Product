@@ -36,13 +36,21 @@ class Ui_Form(object):
         self.mainWidget.setObjectName(u"mainWidget")
         self.mainLayout = QGridLayout(self.mainWidget)
         self.mainLayout.setObjectName(u"mainLayout")
-        self.verticalSpacer = QSpacerItem(1, 500, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_2 = QSpacerItem(60, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
-        self.mainLayout.addItem(self.verticalSpacer, 3, 5, 4, 1)
+        self.mainLayout.addItem(self.horizontalSpacer_2, 1, 3, 1, 1)
 
-        self.horizontalSpacer = QSpacerItem(60, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
+        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.mainLayout.addItem(self.verticalSpacer_2, 2, 0, 1, 5)
+
+        self.horizontalSpacer = QSpacerItem(110, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
         self.mainLayout.addItem(self.horizontalSpacer, 1, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(1, 500, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.mainLayout.addItem(self.verticalSpacer, 4, 5, 4, 1)
 
         self.scrollArea = QScrollArea(self.mainWidget)
         self.scrollArea.setObjectName(u"scrollArea")
@@ -59,13 +67,13 @@ class Ui_Form(object):
         self.notesContainer = QVBoxLayout(self.notesScrollArea)
         self.notesContainer.setObjectName(u"notesContainer")
         self.notesContainer.setContentsMargins(0, -1, 0, -1)
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSP = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.notesContainer.addItem(self.verticalSpacer_3)
+        self.notesContainer.addItem(self.verticalSP)
 
         self.scrollArea.setWidget(self.notesScrollArea)
 
-        self.mainLayout.addWidget(self.scrollArea, 3, 0, 4, 5)
+        self.mainLayout.addWidget(self.scrollArea, 4, 0, 4, 5)
 
         self.createNoteButton = QPushButton(self.mainWidget)
         self.createNoteButton.setObjectName(u"createNoteButton")
@@ -120,28 +128,6 @@ class Ui_Form(object):
 
         self.mainLayout.addWidget(self.widget, 1, 2, 1, 1)
 
-        self.menuButtonOutside = QPushButton(self.mainWidget)
-        self.menuButtonOutside.setObjectName(u"menuButtonOutside")
-        self.menuButtonOutside.setMinimumSize(QSize(50, 50))
-        self.menuButtonOutside.setMaximumSize(QSize(50, 50))
-        self.menuButtonOutside.setCursor(QCursor(Qt.PointingHandCursor))
-        self.menuButtonOutside.setStyleSheet(u"background-color: rgb(69, 119, 108);\n"
-"border-style: solid;\n"
-"border-width: 5px;\n"
-"border-color: rgb(32, 69, 71);\n"
-"color: rgb(239, 241, 237);\n"
-"border-radius: 10px;")
-
-        self.mainLayout.addWidget(self.menuButtonOutside, 1, 0, 1, 1)
-
-        self.horizontalSpacer_2 = QSpacerItem(60, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
-
-        self.mainLayout.addItem(self.horizontalSpacer_2, 1, 3, 1, 1)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.mainLayout.addItem(self.verticalSpacer_2, 2, 0, 1, 5)
-
 
         self.gridLayout.addWidget(self.mainWidget, 0, 9, 2, 1)
 
@@ -156,7 +142,7 @@ class Ui_Form(object):
 "border-radius: 15px;")
         self.gridLayout_2 = QGridLayout(self.EditingBox)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_6 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.gridLayout_2.addItem(self.verticalSpacer_6, 13, 2, 1, 3)
 
@@ -440,7 +426,6 @@ class Ui_Form(object):
         self.createNoteButton.setText(QCoreApplication.translate("Form", u"+", None))
         self.findEdit.setText("")
         self.findEdit.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u0430\u0437\u0432\u0443 \u043d\u043e\u0442\u0430\u0442\u043a\u0443", None))
-        self.menuButtonOutside.setText(QCoreApplication.translate("Form", u"\u041c\u0435\u043d\u044e", None))
         self.EditingBox.setTitle("")
         self.label.setText(QCoreApplication.translate("Form", u"\u0412\u0438\u0440\u0456\u0432\u043d\u044e\u0432\u0430\u043d\u043d\u044f", None))
         self.increaseFontButton.setText(QCoreApplication.translate("Form", u"A+", None))

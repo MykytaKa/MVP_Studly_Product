@@ -24,6 +24,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setMinimumSize(QSize(800, 600))
         MainWindow.setStyleSheet(u"background-color: rgb(69, 119, 108);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -53,8 +54,8 @@ class Ui_MainWindow(object):
         self.scheduleButton = QPushButton(self.menuWidget)
         self.scheduleButton.setObjectName(u"scheduleButton")
         self.scheduleButton.setStyleSheet(u"border-style: solid;\n"
-"border-width: 0px;\n"
-"color: rgb(239, 241, 237);")
+"        border-width: 0px;\n"
+"        color: rgb(239, 241, 237);")
 
         self.buttonsMenu.addWidget(self.scheduleButton)
 
