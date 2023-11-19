@@ -44,6 +44,74 @@ border-radius: 10px;</string>
          <number>0</number>
         </property>
         <item row="1" column="3">
+         <widget class="QPushButton" name="chooseDateButton">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+          </property>
+          <property name="text">
+           <string>листопад 2023</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="createMeetButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>130</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+          </property>
+          <property name="text">
+           <string>Створити зустріч</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
          <widget class="QPushButton" name="dateBack">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -63,6 +131,11 @@ border-radius: 10px;</string>
             <height>30</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
@@ -78,41 +151,24 @@ border-width: 2px;</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>13</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="4">
-         <widget class="QPushButton" name="dateForward">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+        <item row="1" column="5">
+         <widget class="QPushButton" name="todayButton">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>80</width>
             <height>30</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
+            <width>80</width>
             <height>30</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
@@ -125,36 +181,7 @@ border-color: rgb(69, 119, 108);
 border-width: 2px;</string>
           </property>
           <property name="text">
-           <string>&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="createMeetButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-radius: 10px;
-border-style: solid;
-background-color: rgba(69, 119, 108, 25);
-border-color: rgb(69, 119, 108);
-border-width: 2px;</string>
-          </property>
-          <property name="text">
-           <string>Створити зустріч</string>
+           <string>Сьогодні</string>
           </property>
          </widget>
         </item>
@@ -174,20 +201,7 @@ border-width: 2px;</string>
           </property>
          </spacer>
         </item>
-        <item row="1" column="2">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="5">
+        <item row="1" column="8">
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -203,7 +217,76 @@ border-width: 2px;</string>
           </property>
          </spacer>
         </item>
-        <item row="3" column="0" colspan="6">
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>13</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="6">
+         <widget class="QPushButton" name="dateForward">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+          </property>
+          <property name="text">
+           <string>&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="0" colspan="9">
          <layout class="QGridLayout" name="daysContainer">
           <property name="rightMargin">
            <number>9</number>
@@ -211,117 +294,6 @@ border-width: 2px;</string>
           <property name="horizontalSpacing">
            <number>3</number>
           </property>
-          <item row="0" column="2">
-           <widget class="QLabel" name="day2Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="5">
-           <widget class="QLabel" name="day5Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="7">
-           <widget class="QLabel" name="day7Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border-top-right-radius: 10px;</string>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="4">
-           <widget class="QLabel" name="day4Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="day3Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="day1Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border-top-left-radius: 10px;</string>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="6">
-           <widget class="QLabel" name="day6Label">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1" colspan="7">
            <spacer name="verticalSpacer_4">
             <property name="orientation">
@@ -363,8 +335,8 @@ border-width: 2px;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>657</width>
-               <height>293</height>
+               <width>663</width>
+               <height>330</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
@@ -381,9 +353,9 @@ border-width: 2px;</string>
                <number>0</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <item>
-                 <widget class="QWidget" name="dayColumn1" native="true">
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="1" column="4">
+                 <widget class="QWidget" name="dayColumn5" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -394,33 +366,28 @@ border-width: 2px;</string>
                    <string notr="true">background-color: rgb(120, 180, 167);
 alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
-border-radius: 0px;
-border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;</string>
+border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="dayColumn1Layout">
+                  <layout class="QVBoxLayout" name="dayColumn5Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
-                    <spacer name="verticalSpacer">
+                    <spacer name="verticalSpacer_8">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Expanding</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -433,7 +400,54 @@ border-bottom-left-radius: 10px;</string>
                   </layout>
                  </widget>
                 </item>
-                <item>
+                <item row="1" column="6">
+                 <widget class="QWidget" name="dayColumn7" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(120, 180, 167);
+alternate-background-color: rgb(120, 180, 167);
+border-radius: 0px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="dayColumn7Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>6</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>6</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>6</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <spacer name="verticalSpacer_10">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="1">
                  <widget class="QWidget" name="dayColumn2" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -448,17 +462,20 @@ border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
                   <layout class="QVBoxLayout" name="dayColumn2Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_5">
@@ -479,7 +496,7 @@ border-radius: 0px;</string>
                   </layout>
                  </widget>
                 </item>
-                <item>
+                <item row="1" column="2">
                  <widget class="QWidget" name="dayColumn3" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -494,17 +511,20 @@ border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
                   <layout class="QVBoxLayout" name="dayColumn3Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_6">
@@ -525,8 +545,8 @@ border-radius: 0px;</string>
                   </layout>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QWidget" name="dayColumn4" native="true">
+                <item row="1" column="0">
+                 <widget class="QWidget" name="dayColumn1" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -537,25 +557,33 @@ border-radius: 0px;</string>
                    <string notr="true">background-color: rgb(120, 180, 167);
 alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
-border-radius: 0px;</string>
+border-radius: 0px;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="dayColumn4Layout">
+                  <layout class="QVBoxLayout" name="dayColumn1Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
-                    <spacer name="verticalSpacer_7">
+                    <spacer name="verticalSpacer">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Expanding</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -568,50 +596,7 @@ border-radius: 0px;</string>
                   </layout>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QWidget" name="dayColumn5" native="true">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(120, 180, 167);
-alternate-background-color: rgb(120, 180, 167);
-border-color: rgb(120, 180, 167);
-border-radius: 0px;</string>
-                  </property>
-                  <layout class="QVBoxLayout" name="dayColumn5Layout">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <spacer name="verticalSpacer_8">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
+                <item row="1" column="5">
                  <widget class="QWidget" name="dayColumn6" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -626,17 +611,20 @@ border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
                   <layout class="QVBoxLayout" name="dayColumn6Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_9">
@@ -654,8 +642,8 @@ border-radius: 0px;</string>
                   </layout>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QWidget" name="dayColumn7" native="true">
+                <item row="1" column="3">
+                 <widget class="QWidget" name="dayColumn4" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -665,25 +653,27 @@ border-radius: 0px;</string>
                   <property name="styleSheet">
                    <string notr="true">background-color: rgb(120, 180, 167);
 alternate-background-color: rgb(120, 180, 167);
-border-radius: 0px;
-border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;</string>
+border-color: rgb(120, 180, 167);
+border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="dayColumn7Layout">
+                  <layout class="QVBoxLayout" name="dayColumn4Layout">
+                   <property name="spacing">
+                    <number>9</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
-                    <spacer name="verticalSpacer_10">
+                    <spacer name="verticalSpacer_7">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
                      </property>
@@ -696,6 +686,117 @@ border-bottom-right-radius: 10px;</string>
                     </spacer>
                    </item>
                   </layout>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="day1Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border-top-left-radius: 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="day2Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="day3Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLabel" name="day4Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="QLabel" name="day5Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5">
+                 <widget class="QLabel" name="day6Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="6">
+                 <widget class="QLabel" name="day7Label">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border-top-right-radius: 10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
                  </widget>
                 </item>
                </layout>

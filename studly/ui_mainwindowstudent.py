@@ -29,133 +29,157 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.widgetContainer = QVBoxLayout()
+        self.widgetContainer.setObjectName(u"widgetContainer")
+
+        self.gridLayout.addLayout(self.widgetContainer, 2, 0, 1, 1)
+
         self.menuWidget = QWidget(self.centralwidget)
         self.menuWidget.setObjectName(u"menuWidget")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.menuWidget.sizePolicy().hasHeightForWidth())
-        self.menuWidget.setSizePolicy(sizePolicy)
-        self.menuWidget.setStyleSheet(u"height: 20%;")
         self.verticalLayout = QVBoxLayout(self.menuWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.buttonsMenu = QHBoxLayout()
-        self.buttonsMenu.setSpacing(5)
-        self.buttonsMenu.setObjectName(u"buttonsMenu")
-        self.buttonsMenu.setContentsMargins(-1, -1, 0, 0)
-        self.logoLabel = QLabel(self.menuWidget)
+        self.buttonsMenuWidget = QWidget(self.menuWidget)
+        self.buttonsMenuWidget.setObjectName(u"buttonsMenuWidget")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.buttonsMenuWidget.sizePolicy().hasHeightForWidth())
+        self.buttonsMenuWidget.setSizePolicy(sizePolicy)
+        self.buttonsMenuWidget.setMinimumSize(QSize(0, 70))
+        self.buttonsMenuWidget.setMaximumSize(QSize(16777215, 70))
+        self.horizontalLayout = QHBoxLayout(self.buttonsMenuWidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.logoLabel = QLabel(self.buttonsMenuWidget)
         self.logoLabel.setObjectName(u"logoLabel")
-        self.logoLabel.setAlignment(Qt.AlignCenter)
 
-        self.buttonsMenu.addWidget(self.logoLabel)
+        self.horizontalLayout.addWidget(self.logoLabel)
 
-        self.scheduleButton = QPushButton(self.menuWidget)
+        self.horizontalSpacer_4 = QSpacerItem(110, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_4)
+
+        self.scheduleButton = QPushButton(self.buttonsMenuWidget)
         self.scheduleButton.setObjectName(u"scheduleButton")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.scheduleButton.sizePolicy().hasHeightForWidth())
-        self.scheduleButton.setSizePolicy(sizePolicy1)
+        self.scheduleButton.setMinimumSize(QSize(120, 40))
+        self.scheduleButton.setMaximumSize(QSize(500, 40))
+        font = QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.scheduleButton.setFont(font)
         self.scheduleButton.setStyleSheet(u"border-style: solid;\n"
-"        border-width: 0px;\n"
-"        color: rgb(239, 241, 237);")
+"border-color: rgb(32, 69, 71);\n"
+"border-width: 5px;\n"
+"border-radius: 10px;\n"
+"background-color: rgb(55, 95, 86);\n"
+"color: rgb(239, 241, 237);")
 
-        self.buttonsMenu.addWidget(self.scheduleButton)
+        self.horizontalLayout.addWidget(self.scheduleButton)
 
-        self.horizontalSpacer = QSpacerItem(20, 20, QSizePolicy.Maximum, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(20, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
-        self.buttonsMenu.addItem(self.horizontalSpacer)
+        self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.lecturesButton = QPushButton(self.menuWidget)
+        self.lecturesButton = QPushButton(self.buttonsMenuWidget)
         self.lecturesButton.setObjectName(u"lecturesButton")
-        sizePolicy1.setHeightForWidth(self.lecturesButton.sizePolicy().hasHeightForWidth())
-        self.lecturesButton.setSizePolicy(sizePolicy1)
+        self.lecturesButton.setMinimumSize(QSize(120, 40))
+        self.lecturesButton.setMaximumSize(QSize(500, 40))
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.lecturesButton.setFont(font1)
         self.lecturesButton.setStyleSheet(u"border-style: solid;\n"
-"        border-width: 0px;\n"
-"        color: rgb(239, 241, 237);")
+"border-color: rgb(32, 69, 71);\n"
+"border-width: 5px;\n"
+"border-radius: 10px;\n"
+"background-color: rgb(55, 95, 86);\n"
+"color: rgb(239, 241, 237);")
 
-        self.buttonsMenu.addWidget(self.lecturesButton)
+        self.horizontalLayout.addWidget(self.lecturesButton)
 
-        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Maximum, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
-        self.buttonsMenu.addItem(self.horizontalSpacer_2)
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
-        self.teachersButton = QPushButton(self.menuWidget)
+        self.teachersButton = QPushButton(self.buttonsMenuWidget)
         self.teachersButton.setObjectName(u"teachersButton")
-        sizePolicy1.setHeightForWidth(self.teachersButton.sizePolicy().hasHeightForWidth())
-        self.teachersButton.setSizePolicy(sizePolicy1)
+        self.teachersButton.setMinimumSize(QSize(120, 40))
+        self.teachersButton.setMaximumSize(QSize(500, 40))
+        self.teachersButton.setFont(font1)
         self.teachersButton.setStyleSheet(u"border-style: solid;\n"
-"        border-width: 0px;\n"
-"        color: rgb(239, 241, 237);")
+"border-color: rgb(32, 69, 71);\n"
+"border-width: 5px;\n"
+"border-radius: 10px;\n"
+"background-color: rgb(55, 95, 86);\n"
+"color: rgb(239, 241, 237);")
 
-        self.buttonsMenu.addWidget(self.teachersButton)
+        self.horizontalLayout.addWidget(self.teachersButton)
 
-        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Maximum, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
-        self.buttonsMenu.addItem(self.horizontalSpacer_3)
+        self.horizontalLayout.addItem(self.horizontalSpacer_3)
 
-        self.notesButton = QPushButton(self.menuWidget)
+        self.notesButton = QPushButton(self.buttonsMenuWidget)
         self.notesButton.setObjectName(u"notesButton")
-        sizePolicy1.setHeightForWidth(self.notesButton.sizePolicy().hasHeightForWidth())
-        self.notesButton.setSizePolicy(sizePolicy1)
+        self.notesButton.setMinimumSize(QSize(120, 40))
+        self.notesButton.setMaximumSize(QSize(500, 40))
+        self.notesButton.setFont(font1)
         self.notesButton.setStyleSheet(u"border-style: solid;\n"
-"        border-width: 0px;\n"
-"        color: rgb(239, 241, 237);")
+"border-color: rgb(32, 69, 71);\n"
+"border-width: 5px;\n"
+"border-radius: 10px;\n"
+"background-color: rgb(55, 95, 86);\n"
+"color: rgb(239, 241, 237);")
 
-        self.buttonsMenu.addWidget(self.notesButton)
+        self.horizontalLayout.addWidget(self.notesButton)
 
-        self.horizontalSpacer_5 = QSpacerItem(50, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(110, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
-        self.buttonsMenu.addItem(self.horizontalSpacer_5)
+        self.horizontalLayout.addItem(self.horizontalSpacer_5)
 
         self.profileContainer = QGridLayout()
         self.profileContainer.setObjectName(u"profileContainer")
-        self.profileContainer.setVerticalSpacing(0)
-        self.profileContainer.setContentsMargins(-1, 0, -1, 0)
+        self.userIcon = QLabel(self.buttonsMenuWidget)
+        self.userIcon.setObjectName(u"userIcon")
+        self.userIcon.setMinimumSize(QSize(60, 60))
+        self.userIcon.setMaximumSize(QSize(60, 60))
+        self.userIcon.setStyleSheet(u"border-style: solid;\n"
+"border-width: 5px;\n"
+"border-color: rgb(32, 69, 71);\n"
+"border-radius: 30%;")
+
+        self.profileContainer.addWidget(self.userIcon, 0, 0, 1, 1)
+
         self.userInfoContainer = QVBoxLayout()
+        self.userInfoContainer.setSpacing(0)
         self.userInfoContainer.setObjectName(u"userInfoContainer")
-        self.userFullname = QLabel(self.menuWidget)
+        self.userFullname = QLabel(self.buttonsMenuWidget)
         self.userFullname.setObjectName(u"userFullname")
-        self.userFullname.setStyleSheet(u"color: rgb(0, 0, 0);")
 
         self.userInfoContainer.addWidget(self.userFullname)
 
-        self.userInfo = QLabel(self.menuWidget)
+        self.userInfo = QLabel(self.buttonsMenuWidget)
         self.userInfo.setObjectName(u"userInfo")
-        self.userInfo.setStyleSheet(u"color: rgb(0, 0, 0);")
 
         self.userInfoContainer.addWidget(self.userInfo)
 
 
-        self.profileContainer.addLayout(self.userInfoContainer, 0, 2, 1, 1)
-
-        self.userIcon = QLabel(self.menuWidget)
-        self.userIcon.setObjectName(u"userIcon")
-        self.userIcon.setStyleSheet(u"color: rgb(0, 0, 0);")
-
-        self.profileContainer.addWidget(self.userIcon, 0, 1, 1, 1)
+        self.profileContainer.addLayout(self.userInfoContainer, 0, 1, 1, 1)
 
 
-        self.buttonsMenu.addLayout(self.profileContainer)
+        self.horizontalLayout.addLayout(self.profileContainer)
 
 
-        self.verticalLayout.addLayout(self.buttonsMenu)
+        self.verticalLayout.addWidget(self.buttonsMenuWidget)
 
-        self.verticalSpacer = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_2 = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.verticalLayout.addItem(self.verticalSpacer_2)
 
 
-        self.gridLayout.addWidget(self.menuWidget, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.menuWidget, 1, 0, 1, 1)
 
-        self.widgetContainer = QVBoxLayout()
-        self.widgetContainer.setObjectName(u"widgetContainer")
+        self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
-        self.gridLayout.addLayout(self.widgetContainer, 2, 1, 1, 1)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
+        self.gridLayout.addItem(self.verticalSpacer, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -174,12 +198,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Student", None))
         self.logoLabel.setText(QCoreApplication.translate("MainWindow", u"STUDLY", None))
-        self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u043e\u0437\u043a\u043b\u0430\u0434", None))
-        self.lecturesButton.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0435\u043a\u0446\u0456\u0457", None))
-        self.teachersButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0456", None))
-        self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0442\u0430\u0442\u043a\u0438", None))
+        self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u041e\u0417\u041a\u041b\u0410\u0414", None))
+        self.lecturesButton.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0415\u041a\u0426\u0406\u0407", None))
+        self.teachersButton.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0418\u041a\u041b\u0410\u0414\u0410\u0427\u0406", None))
+        self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u041e\u0422\u0410\u0422\u041a\u0418", None))
+        self.userIcon.setText("")
         self.userFullname.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435 \u0406.\u041f.", None))
         self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
-        self.userIcon.setText(QCoreApplication.translate("MainWindow", u"ICONA", None))
     # retranslateUi
 

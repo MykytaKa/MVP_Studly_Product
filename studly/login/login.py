@@ -2,7 +2,7 @@ import re
 from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow, QLineEdit
 from PySide6.QtCore import QTimer, QSettings
-from PyQt5.QtGui import QPixmap
+#from PyQt5.QtGui import QPixmap
 from login.ui_login import Ui_MainWindow
 from mainwindowstudent import MainWindowStudent
 from mainwindowteacher import MainWindowTeacher

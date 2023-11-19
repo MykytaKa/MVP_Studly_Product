@@ -23,9 +23,18 @@ class MainWindowStudent(QMainWindow):
         self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
 
         self.unlight_buttons()
-        font = QFont()
-        font.setUnderline(True)
-        self.ui.scheduleButton.setFont(font)
+
+        buttonFont = QFont()
+        buttonFont.setPointSize(11)
+
+        self.ui.scheduleButton.setFont(buttonFont)
+        self.ui.lecturesButton.setFont(buttonFont)
+        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.notesButton.setFont(buttonFont)
+
+        buttonFont.setPointSize(11)
+        buttonFont.setBold(True)
+        self.ui.scheduleButton.setFont(buttonFont)
 
         self.ui.scheduleButton.setCursor(Qt.PointingHandCursor)
         self.ui.lecturesButton.setCursor(Qt.PointingHandCursor)
@@ -40,17 +49,18 @@ class MainWindowStudent(QMainWindow):
     def light_chosen_button(self, button):
         self.unlight_buttons()
         font = QFont()
-        font.setUnderline(True)
+        font.setPointSize(11)
+        font.setBold(True)
         button.setFont(font)
 
     def unlight_buttons(self):
-        font = QFont()
-        font.setUnderline(False)
+        buttonFont = QFont()
+        buttonFont.setPointSize(11)
 
-        self.ui.scheduleButton.setFont(font)
-        self.ui.lecturesButton.setFont(font)
-        self.ui.teachersButton.setFont(font)
-        self.ui.notesButton.setFont(font)
+        self.ui.scheduleButton.setFont(buttonFont)
+        self.ui.lecturesButton.setFont(buttonFont)
+        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.notesButton.setFont(buttonFont)
 
     def loadSection(self, section):
         self.currentWidget.close()

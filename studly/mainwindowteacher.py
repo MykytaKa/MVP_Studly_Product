@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QMainWindow
 from ui_mainwindowteacher import Ui_MainWindow
 from schedule.scheduleClassTeacher import ScheduleClassTeacher
 from notes.NotesClass import NotesWindow
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 
 
 class MainWindowTeacher(QMainWindow):
@@ -12,16 +12,25 @@ class MainWindowTeacher(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.currentWidget = ScheduleClassTeacher(main_window=self)
-        self.ui.widgetContainer.addWidget(self.currentWidget)
+        self.currentWidget = ScheduleClassTeacher()
+        self.ui.widgetContainer.addWidget(self.currentWidget)   
 
         self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClassTeacher()))
         self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
 
         self.unlight_buttons()
-        font = QFont()
-        font.setUnderline(True)
-        self.ui.scheduleButton.setFont(font)
+
+        buttonFont = QFont()
+        buttonFont.setPointSize(11)
+
+        self.ui.scheduleButton.setFont(buttonFont)
+        self.ui.lecturesButton.setFont(buttonFont)
+        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.notesButton.setFont(buttonFont)
+
+        buttonFont.setPointSize(11)
+        buttonFont.setBold(True)
+        self.ui.scheduleButton.setFont(buttonFont)
 
         self.ui.scheduleButton.setCursor(Qt.PointingHandCursor)
         self.ui.lecturesButton.setCursor(Qt.PointingHandCursor)
@@ -36,17 +45,18 @@ class MainWindowTeacher(QMainWindow):
     def light_chosen_button(self, button):
         self.unlight_buttons()
         font = QFont()
-        font.setUnderline(True)
+        font.setPointSize(11)
+        font.setBold(True)
         button.setFont(font)
 
     def unlight_buttons(self):
-        font = QFont()
-        font.setUnderline(False)
+        buttonFont = QFont()
+        buttonFont.setPointSize(11)
 
-        self.ui.scheduleButton.setFont(font)
-        self.ui.lecturesButton.setFont(font)
-        self.ui.teachersButton.setFont(font)
-        self.ui.notesButton.setFont(font)
+        self.ui.scheduleButton.setFont(buttonFont)
+        self.ui.lecturesButton.setFont(buttonFont)
+        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.notesButton.setFont(buttonFont)
 
     def loadSection(self, section):
         self.currentWidget.close()

@@ -1,5 +1,5 @@
 # This Python file uses the following encoding: utf-8
-from PySide6.QtCore import Qt, Signal
+from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtWidgets import (QWidget, QLabel, QVBoxLayout, QGridLayout, QSizePolicy,
                                QGroupBox, QPushButton, QSpacerItem)
 from PySide6.QtGui import QFont, QTextBlockFormat, QTextDocumentFragment, QTextDocument, QIcon
@@ -33,6 +33,7 @@ class NotesWidget(QWidget):
         # Створення лейблів та кнопки для видалення нататка та відображення назви нотатка та його опису
         title_font = QFont()
         title_font.setBold(True)
+        title_font.setPointSize(12)
 
         self.titleLabel = QLabel(title)
         self.titleLabel.setFont(title_font)
@@ -128,6 +129,11 @@ class NotesWindow(QWidget):
         self.currentNote = None
         self.currentNoteText = ''
 
+        # Таймер задля уникнення проблем зі швидкими кліками на кнопки
+        self.timer = QTimer()
+        self.timer.setInterval(100)
+        self.timer.timeout.connect(self.create_new)
+
         # Масив для зберігання нотатків
         self.notesList = []
         self.notes = []
@@ -145,7 +151,7 @@ class NotesWindow(QWidget):
 
         # Connect задля роботи кнопок "повернутися на головне меню" та "відкривання" нотатка
         self.ui.returnButton.clicked.connect(self.return_to_main)
-        self.ui.createNoteButton.clicked.connect(self.create_new)
+        self.ui.createNoteButton.clicked.connect(self.startTimer)
 
         # Connect задля роботи кнопок, які форматують виділений текст
         self.ui.boldButton.clicked.connect(self.set_bold_text)
@@ -156,9 +162,13 @@ class NotesWindow(QWidget):
         self.ui.leftAlignmentButton.clicked.connect(lambda: self.set_alignment(Qt.AlignmentFlag.AlignLeft))
         self.ui.centerAlignmentButton.clicked.connect(lambda: self.set_alignment(Qt.AlignmentFlag.AlignCenter))
         self.ui.rightAlignmentButton.clicked.connect(lambda: self.set_alignment(Qt.AlignmentFlag.AlignRight))
+        self.ui.strikeoutButton.clicked.connect(self.set_strikeout_text)
 
-        # Connect задля того, аби при шукати по назві необхідні нотатки
+        # Connect задля того, аби шукати по назві необхідні нотатки
         self.ui.findEdit.textChanged.connect(self.viev_found_notes)
+
+    def startTimer(self):
+        self.timer.start()
 
     def load_notes(self):
         if os.path.exists(self.filename):
@@ -215,6 +225,7 @@ class NotesWindow(QWidget):
 
         self.get_notes()
         self.update_searchline_status()
+        self.timer.stop()
 
     def save_text(self, note_widget):
         index = self.ui.notesContainer.indexOf(note_widget)
@@ -355,4 +366,19 @@ class NotesWindow(QWidget):
 
         # Встановлення вирівнювання для виділеного тексту
         self.cursor.mergeBlockFormat(block_format)
+        self.ui.descriptionEdit.setTextCursor(self.cursor)
+
+    def set_strikeout_text(self):
+        self.cursor = self.ui.descriptionEdit.textCursor()
+        format = self.cursor.charFormat()
+        # Перевірка, чи виділений текст закреслений
+        if format.fontStrikeOut():
+            # Якщо закреслений, робимо не закресленим
+            format.setFontStrikeOut(False)
+        else:
+            # Якщо не закреслений, робимо закресленим
+            format.setFontStrikeOut(True)
+
+        # Застосування нового формату до виділеного тексту
+        self.cursor.mergeCharFormat(format)
         self.ui.descriptionEdit.setTextCursor(self.cursor)
