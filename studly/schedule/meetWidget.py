@@ -2,14 +2,16 @@
 #from PySide6.QtCore import
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout, QSizePolicy, QPushButton, QGroupBox
 from PySide6.QtCore import Qt, QTime
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QIcon
 
 # Дискретна математика, теорія алгоритмів та структури даних
 
 class meetWidget(QWidget):
-    def __init__(self, meetTitle = None, meetTime = None, meetDuration = None, teacherName = None, parent = None):
+    def __init__(self, meet_id = None, meetTitle = None, meetTime = None, meetDuration = None, teacherId = None, parent = None):
         super().__init__(parent)
         self.setSizePolicy(QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed))
+
+        self.meet_id = meet_id
 
         # Label для відображення назви зустрічі
         font = QFont()
@@ -20,18 +22,12 @@ class meetWidget(QWidget):
         self.title.setFont(font)
         self.title.setStyleSheet('padding: 5px;\n border-style: none')
 
+
         # Label для відображення тривалості зустрічі
         self.durationLalel = QLabel()
         self.setStyleSheet('padding-left: 5px;\npadding-right:5px;')
         self.durationLalel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.durationLalel.setText(self.set_duration(meetTime.toString("dd.MM.yyyy.hh.mm"), meetDuration))
-
-        # Кнопка для видалення зустрічі
-        self.deleteButton = QPushButton('Видалити')
-        self.deleteButton.setCursor(Qt.PointingHandCursor)
-        self.deleteButton.setStyleSheet('''background-color: rgb(69, 119, 108);\n
-                                           color: rgb(255, 255, 255);''')
-        self.deleteButton.clicked.connect(self.delete_meet)
 
         # Створення Layout для GroupBox
         self.boxContainer = QVBoxLayout()
@@ -39,7 +35,16 @@ class meetWidget(QWidget):
 
         self.boxContainer.addWidget(self.title)
         self.boxContainer.addWidget(self.durationLalel, 1, Qt.AlignmentFlag.AlignCenter)
-        self.boxContainer.addWidget(self.deleteButton)
+
+        if teacherId is not None:
+            # Кнопка для видалення зустрічі
+            self.deleteButton = QPushButton('Видалити')
+            self.deleteButton.setCursor(Qt.PointingHandCursor)
+            self.deleteButton.setIcon(QIcon(':/icons/delete.png'))
+            self.deleteButton.setStyleSheet('''background-color: rgb(69, 119, 108);\n
+                                               color: rgb(255, 255, 255); font: 7pt "Segoe UI";''')
+
+            self.boxContainer.addWidget(self.deleteButton, 1, Qt.AlignmentFlag.AlignCenter)
 
         # Створення GroupBox для більш коректної роботи CSS коду
         self.box = QGroupBox()
@@ -84,5 +89,4 @@ class meetWidget(QWidget):
 
         return new_title.rstrip()
 
-    def delete_meet(self):
-        self.setParent(None)
+

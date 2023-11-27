@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
     QHBoxLayout, QLabel, QPushButton, QScrollArea,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -62,7 +63,7 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.createMeetButton.sizePolicy().hasHeightForWidth())
         self.createMeetButton.setSizePolicy(sizePolicy)
-        self.createMeetButton.setMinimumSize(QSize(130, 30))
+        self.createMeetButton.setMinimumSize(QSize(180, 30))
         self.createMeetButton.setFont(font)
         self.createMeetButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.createMeetButton.setStyleSheet(u"border-radius: 10px;\n"
@@ -70,6 +71,9 @@ class Ui_Form(object):
 "background-color: rgba(69, 119, 108, 25);\n"
 "border-color: rgb(69, 119, 108);\n"
 "border-width: 2px;")
+        icon = QIcon()
+        icon.addFile(u":/icons/newMeet.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.createMeetButton.setIcon(icon)
 
         self.gridLayout_2.addWidget(self.createMeetButton, 1, 1, 1, 1)
 
