@@ -190,7 +190,7 @@ color: rgb(239, 241, 237);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="teachersButton">
+           <widget class="QPushButton" name="membersButton">
             <property name="minimumSize">
              <size>
               <width>120</width>
@@ -217,7 +217,7 @@ background-color: rgb(55, 95, 86);
 color: rgb(239, 241, 237);</string>
             </property>
             <property name="text">
-             <string>ВИКЛАДАЧІ</string>
+             <string>УЧАСНИКИ</string>
             </property>
            </widget>
           </item>

@@ -23,6 +23,10 @@
         "consts.py",
         "notes/NotesClass.py",
         "notes/NotesClass.ui",
-        "schedule/DateDialog.py"
+        "schedule/DateDialog.py",
+        "members/MembersClass.py",
+        "members/MembersClass.ui",
+        "members/GroupViewer.py",
+        "members/ui_MembersClass.py"
     ]
 }

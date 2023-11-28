@@ -1,8 +1,9 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>logo.png</file>
         <file>icon.png</file>
-        <file>test.png</file>
-        <file>delete.png</file>
+        <file>hideList.png</file>
+        <file>showList.png</file>
+        <file>teacher.png</file>
+        <file>student.png</file>
     </qresource>
 </RCC>
