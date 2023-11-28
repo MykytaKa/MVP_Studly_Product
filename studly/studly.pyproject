@@ -23,6 +23,8 @@
         "consts.py",
         "notes/NotesClass.py",
         "notes/NotesClass.ui",
-        "schedule/DateDialog.py"
+        "schedule/DateDialog.py",
+        "about/about.ui",
+        "about/about.py"
     ]
 }

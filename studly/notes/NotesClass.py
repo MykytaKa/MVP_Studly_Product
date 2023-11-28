@@ -139,7 +139,7 @@ class NotesWindow(QWidget):
         self.notes = []
 
         # self.cart = Cart()  # добавляем корзину
-        self.filename = 'notes/notes.pkl'
+        self.filename = 'notes.pkl'
         self.load_notes()
         self.get_notes()
 
@@ -177,14 +177,14 @@ class NotesWindow(QWidget):
                 self.notes = [Note(title, html) for title, html in notes_data]
 
     def get_notes(self):
-        while self.ui.notesContainer.count() > 0:
+        while self.ui.notesContainer.count() > 1:
             item = self.ui.notesContainer.takeAt(0)
             if item is not None:
                 widget_to_remove = item.widget()
                 if widget_to_remove is not None:
                     widget_to_remove.setParent(None)
 
-        self.ui.notesContainer.addItem(self.ui.verticalSP)
+#        self.ui.notesContainer.addItem(self.ui.verticalSP)
         self.display_notes()
 
     def display_notes(self):

@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(800, 600))
         MainWindow.setMaximumSize(QSize(800, 600))
         icon = QIcon()
-        icon.addFile(u":/icons/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/exe_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"background-color: rgb(32, 69, 71);")
         self.centralwidget = QWidget(MainWindow)
@@ -234,7 +234,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0412\u0445\u0456\u0434", None))
-        self.studlyLabel.setText(QCoreApplication.translate("MainWindow", u"Studly", None))
+        self.studlyLabel.setText("")
         self.errorLabel.setText("")
         self.loginLabel.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043b\u0435\u0444\u043e\u043d/Email", None))
         self.loginEdit.setInputMask("")

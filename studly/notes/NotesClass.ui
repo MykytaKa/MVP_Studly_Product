@@ -186,8 +186,9 @@ margin-bottom: 5px;
 color: rgb(239, 241, 237);
 border-radius: 15px;</string>
                   </property>
-                  <property name="text">
-                   <string>Ліворуч</string>
+                  <property name="icon">
+                   <iconset resource="../img/img.qrc">
+                    <normaloff>:/icons/left_alignment.png</normaloff>:/icons/left_alignment.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -229,7 +230,11 @@ color: rgb(239, 241, 237);
 border-radius: 15px;</string>
                   </property>
                   <property name="text">
-                   <string>По центру</string>
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../img/img.qrc">
+                    <normaloff>:/icons/center_alignment.png</normaloff>:/icons/center_alignment.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -264,8 +269,9 @@ margin-bottom: 5px;
 color: rgb(239, 241, 237);
 border-radius: 15px;</string>
                   </property>
-                  <property name="text">
-                   <string>Праворуч</string>
+                  <property name="icon">
+                   <iconset resource="../img/img.qrc">
+                    <normaloff>:/icons/right_alignment.png</normaloff>:/icons/right_alignment.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -818,6 +824,10 @@ border-radius: 10px;</string>
           <property name="text">
            <string>Зберегти</string>
           </property>
+          <property name="icon">
+           <iconset resource="../img/img.qrc">
+            <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
+          </property>
          </widget>
         </item>
         <item>
@@ -863,6 +873,10 @@ border-radius: 10px;</string>
           </property>
           <property name="text">
            <string>Відминити</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../img/img.qrc">
+            <normaloff>:/icons/undo.png</normaloff>:/icons/undo.png</iconset>
           </property>
          </widget>
         </item>
@@ -1143,6 +1157,8 @@ padding-bottom: 10px;</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../img/img.qrc"/>
+ </resources>
  <connections/>
 </ui>

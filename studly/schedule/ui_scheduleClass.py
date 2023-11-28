@@ -47,94 +47,6 @@ class Ui_Form(object):
         self.gridLayout_2 = QGridLayout(self.groupBox)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(-1, 0, 0, 0)
-        self.todayButton = QPushButton(self.groupBox)
-        self.todayButton.setObjectName(u"todayButton")
-        self.todayButton.setMinimumSize(QSize(80, 30))
-        self.todayButton.setMaximumSize(QSize(80, 30))
-        font = QFont()
-        font.setPointSize(10)
-        self.todayButton.setFont(font)
-        self.todayButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.todayButton.setStyleSheet(u"border-radius: 10px;\n"
-"border-style: solid;\n"
-"background-color: rgba(69, 119, 108, 25);\n"
-"border-color: rgb(69, 119, 108);\n"
-"border-width: 2px;")
-
-        self.gridLayout_2.addWidget(self.todayButton, 1, 7, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.gridLayout_2.addItem(self.verticalSpacer, 3, 3, 1, 1)
-
-        self.groupLabel = QLabel(self.groupBox)
-        self.groupLabel.setObjectName(u"groupLabel")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.groupLabel.sizePolicy().hasHeightForWidth())
-        self.groupLabel.setSizePolicy(sizePolicy2)
-        font1 = QFont()
-        font1.setPointSize(14)
-        font1.setBold(False)
-        self.groupLabel.setFont(font1)
-        self.groupLabel.setLayoutDirection(Qt.LeftToRight)
-        self.groupLabel.setAutoFillBackground(False)
-        self.groupLabel.setStyleSheet(u"padding-right: 5px;\n"
-"padding-bottom: 10px;\n"
-"padding-left: 95px;")
-        self.groupLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gridLayout_2.addWidget(self.groupLabel, 1, 0, 1, 5)
-
-        self.chooseDateButton = QPushButton(self.groupBox)
-        self.chooseDateButton.setObjectName(u"chooseDateButton")
-        self.chooseDateButton.setMinimumSize(QSize(100, 30))
-        self.chooseDateButton.setMaximumSize(QSize(100, 30))
-        self.chooseDateButton.setFont(font)
-        self.chooseDateButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.chooseDateButton.setStyleSheet(u"border-radius: 10px;\n"
-"border-style: solid;\n"
-"background-color: rgba(69, 119, 108, 25);\n"
-"border-color: rgb(69, 119, 108);\n"
-"border-width: 2px;")
-
-        self.gridLayout_2.addWidget(self.chooseDateButton, 1, 5, 1, 1)
-
-        self.dateForward = QPushButton(self.groupBox)
-        self.dateForward.setObjectName(u"dateForward")
-        self.dateForward.setMinimumSize(QSize(30, 30))
-        self.dateForward.setMaximumSize(QSize(30, 30))
-        self.dateForward.setCursor(QCursor(Qt.PointingHandCursor))
-        self.dateForward.setStyleSheet(u"border-radius: 10px;\n"
-"border-style: solid;\n"
-"background-color: rgba(69, 119, 108, 25);\n"
-"border-color: rgb(69, 119, 108);\n"
-"border-width: 2px;")
-
-        self.gridLayout_2.addWidget(self.dateForward, 1, 8, 1, 1)
-
-        self.dateBack = QPushButton(self.groupBox)
-        self.dateBack.setObjectName(u"dateBack")
-        self.dateBack.setMinimumSize(QSize(30, 30))
-        self.dateBack.setMaximumSize(QSize(30, 30))
-        self.dateBack.setCursor(QCursor(Qt.PointingHandCursor))
-        self.dateBack.setStyleSheet(u"border-radius: 10px;\n"
-"border-style: solid;\n"
-"background-color: rgba(69, 119, 108, 25);\n"
-"border-color: rgb(69, 119, 108);\n"
-"border-width: 2px;")
-
-        self.gridLayout_2.addWidget(self.dateBack, 1, 6, 1, 1)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 13, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.gridLayout_2.addItem(self.verticalSpacer_2, 0, 0, 1, 9)
-
-        self.horizontalSpacer = QSpacerItem(20, 5, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer, 1, 9, 1, 1)
-
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.daysContainer = QGridLayout()
@@ -145,7 +57,7 @@ class Ui_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 725, 313))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 725, 319))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContents.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents.setSizePolicy(sizePolicy1)
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents)
@@ -163,13 +75,13 @@ class Ui_Form(object):
 "border-radius: 0px;\n"
 "border-top-left-radius: 10px;\n"
 "border-bottom-left-radius: 10px;")
-        self.verticalLayout = QVBoxLayout(self.dayColumn1)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn1Layout = QVBoxLayout(self.dayColumn1)
+        self.dayColumn1Layout.setSpacing(9)
+        self.dayColumn1Layout.setObjectName(u"dayColumn1Layout")
+        self.dayColumn1Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer_3)
+        self.dayColumn1Layout.addItem(self.verticalSpacer_3)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn1)
@@ -182,13 +94,13 @@ class Ui_Form(object):
 "alternate-background-color: rgb(120, 180, 167);\n"
 "border-color: rgb(120, 180, 167);\n"
 "border-radius: 0px;")
-        self.verticalLayout_2 = QVBoxLayout(self.dayColumn2)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn2Layout = QVBoxLayout(self.dayColumn2)
+        self.dayColumn2Layout.setSpacing(9)
+        self.dayColumn2Layout.setObjectName(u"dayColumn2Layout")
+        self.dayColumn2Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_2.addItem(self.verticalSpacer_4)
+        self.dayColumn2Layout.addItem(self.verticalSpacer_4)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn2)
@@ -201,13 +113,13 @@ class Ui_Form(object):
 "alternate-background-color: rgb(120, 180, 167);\n"
 "border-color: rgb(120, 180, 167);\n"
 "border-radius: 0px;")
-        self.verticalLayout_3 = QVBoxLayout(self.dayColumn3)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn3Layout = QVBoxLayout(self.dayColumn3)
+        self.dayColumn3Layout.setSpacing(9)
+        self.dayColumn3Layout.setObjectName(u"dayColumn3Layout")
+        self.dayColumn3Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_3.addItem(self.verticalSpacer_5)
+        self.dayColumn3Layout.addItem(self.verticalSpacer_5)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn3)
@@ -220,13 +132,13 @@ class Ui_Form(object):
 "alternate-background-color: rgb(120, 180, 167);\n"
 "border-color: rgb(120, 180, 167);\n"
 "border-radius: 0px;")
-        self.verticalLayout_4 = QVBoxLayout(self.dayColumn4)
-        self.verticalLayout_4.setSpacing(0)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn4Layout = QVBoxLayout(self.dayColumn4)
+        self.dayColumn4Layout.setSpacing(9)
+        self.dayColumn4Layout.setObjectName(u"dayColumn4Layout")
+        self.dayColumn4Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_4.addItem(self.verticalSpacer_6)
+        self.dayColumn4Layout.addItem(self.verticalSpacer_6)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn4)
@@ -239,13 +151,13 @@ class Ui_Form(object):
 "alternate-background-color: rgb(120, 180, 167);\n"
 "border-color: rgb(120, 180, 167);\n"
 "border-radius: 0px;")
-        self.verticalLayout_5 = QVBoxLayout(self.dayColumn5)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn5Layout = QVBoxLayout(self.dayColumn5)
+        self.dayColumn5Layout.setSpacing(9)
+        self.dayColumn5Layout.setObjectName(u"dayColumn5Layout")
+        self.dayColumn5Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_5.addItem(self.verticalSpacer_7)
+        self.dayColumn5Layout.addItem(self.verticalSpacer_7)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn5)
@@ -258,13 +170,13 @@ class Ui_Form(object):
 "alternate-background-color: rgb(120, 180, 167);\n"
 "border-color: rgb(120, 180, 167);\n"
 "border-radius: 0px;")
-        self.verticalLayout_6 = QVBoxLayout(self.dayColumn6)
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn6Layout = QVBoxLayout(self.dayColumn6)
+        self.dayColumn6Layout.setSpacing(9)
+        self.dayColumn6Layout.setObjectName(u"dayColumn6Layout")
+        self.dayColumn6Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_6.addItem(self.verticalSpacer_8)
+        self.dayColumn6Layout.addItem(self.verticalSpacer_8)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn6)
@@ -279,13 +191,13 @@ class Ui_Form(object):
 "border-color: rgb(120, 180, 167);\n"
 "border-top-right-radius: 10px;\n"
 "border-bottom-right-radius: 10px;")
-        self.verticalLayout_7 = QVBoxLayout(self.dayColumn7)
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.dayColumn7Layout = QVBoxLayout(self.dayColumn7)
+        self.dayColumn7Layout.setSpacing(9)
+        self.dayColumn7Layout.setObjectName(u"dayColumn7Layout")
+        self.dayColumn7Layout.setContentsMargins(6, 6, 6, 6)
         self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_7.addItem(self.verticalSpacer_9)
+        self.dayColumn7Layout.addItem(self.verticalSpacer_9)
 
 
         self.horizontalLayout_2.addWidget(self.dayColumn7)
@@ -299,51 +211,51 @@ class Ui_Form(object):
 
         self.day1Label = QLabel(self.groupBox)
         self.day1Label.setObjectName(u"day1Label")
-        font2 = QFont()
-        font2.setPointSize(12)
-        self.day1Label.setFont(font2)
+        font = QFont()
+        font.setPointSize(12)
+        self.day1Label.setFont(font)
         self.day1Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day1Label, 1, 1, 1, 1)
 
         self.day2Label = QLabel(self.groupBox)
         self.day2Label.setObjectName(u"day2Label")
-        self.day2Label.setFont(font2)
+        self.day2Label.setFont(font)
         self.day2Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day2Label, 1, 2, 1, 1)
 
         self.day3Label = QLabel(self.groupBox)
         self.day3Label.setObjectName(u"day3Label")
-        self.day3Label.setFont(font2)
+        self.day3Label.setFont(font)
         self.day3Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day3Label, 1, 3, 1, 1)
 
         self.day4Label = QLabel(self.groupBox)
         self.day4Label.setObjectName(u"day4Label")
-        self.day4Label.setFont(font2)
+        self.day4Label.setFont(font)
         self.day4Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day4Label, 1, 4, 1, 1)
 
         self.day5Label = QLabel(self.groupBox)
         self.day5Label.setObjectName(u"day5Label")
-        self.day5Label.setFont(font2)
+        self.day5Label.setFont(font)
         self.day5Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day5Label, 1, 5, 1, 1)
 
         self.day6Label = QLabel(self.groupBox)
         self.day6Label.setObjectName(u"day6Label")
-        self.day6Label.setFont(font2)
+        self.day6Label.setFont(font)
         self.day6Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day6Label, 1, 6, 1, 1)
 
         self.day7Label = QLabel(self.groupBox)
         self.day7Label.setObjectName(u"day7Label")
-        self.day7Label.setFont(font2)
+        self.day7Label.setFont(font)
         self.day7Label.setAlignment(Qt.AlignCenter)
 
         self.daysContainer.addWidget(self.day7Label, 1, 7, 1, 1)
@@ -352,7 +264,102 @@ class Ui_Form(object):
         self.horizontalLayout.addLayout(self.daysContainer)
 
 
-        self.gridLayout_2.addLayout(self.horizontalLayout, 2, 0, 1, 10)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 2, 0, 1, 11)
+
+        self.dateBack = QPushButton(self.groupBox)
+        self.dateBack.setObjectName(u"dateBack")
+        self.dateBack.setMinimumSize(QSize(30, 30))
+        self.dateBack.setMaximumSize(QSize(30, 30))
+        self.dateBack.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateBack.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.dateBack, 1, 7, 1, 1)
+
+        self.groupLabel = QLabel(self.groupBox)
+        self.groupLabel.setObjectName(u"groupLabel")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.groupLabel.sizePolicy().hasHeightForWidth())
+        self.groupLabel.setSizePolicy(sizePolicy2)
+        self.groupLabel.setMinimumSize(QSize(310, 0))
+        font1 = QFont()
+        font1.setPointSize(14)
+        font1.setBold(False)
+        self.groupLabel.setFont(font1)
+        self.groupLabel.setLayoutDirection(Qt.LeftToRight)
+        self.groupLabel.setAutoFillBackground(False)
+        self.groupLabel.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+        self.groupLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.groupLabel, 1, 0, 1, 5)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 13, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_2.addItem(self.verticalSpacer_2, 0, 0, 1, 10)
+
+        self.dateForward = QPushButton(self.groupBox)
+        self.dateForward.setObjectName(u"dateForward")
+        self.dateForward.setMinimumSize(QSize(30, 30))
+        self.dateForward.setMaximumSize(QSize(30, 30))
+        self.dateForward.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateForward.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.dateForward, 1, 9, 1, 1)
+
+        self.chooseDateButton = QPushButton(self.groupBox)
+        self.chooseDateButton.setObjectName(u"chooseDateButton")
+        self.chooseDateButton.setMinimumSize(QSize(100, 30))
+        self.chooseDateButton.setMaximumSize(QSize(100, 30))
+        font2 = QFont()
+        font2.setPointSize(10)
+        self.chooseDateButton.setFont(font2)
+        self.chooseDateButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.chooseDateButton.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.chooseDateButton, 1, 6, 1, 1)
+
+        self.todayButton = QPushButton(self.groupBox)
+        self.todayButton.setObjectName(u"todayButton")
+        self.todayButton.setMinimumSize(QSize(80, 30))
+        self.todayButton.setMaximumSize(QSize(80, 30))
+        self.todayButton.setFont(font2)
+        self.todayButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.todayButton.setStyleSheet(u"border-radius: 10px;\n"
+"border-style: solid;\n"
+"background-color: rgba(69, 119, 108, 25);\n"
+"border-color: rgb(69, 119, 108);\n"
+"border-width: 2px;")
+
+        self.gridLayout_2.addWidget(self.todayButton, 1, 8, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_2.addItem(self.verticalSpacer, 3, 3, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(20, 5, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer, 1, 10, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(130, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_2, 1, 5, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.groupBox)
@@ -366,11 +373,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"scheduleWindow", None))
         self.groupBox.setTitle("")
-        self.todayButton.setText(QCoreApplication.translate("Form", u"\u0421\u044c\u043e\u0433\u043e\u0434\u043d\u0456", None))
-        self.groupLabel.setText(QCoreApplication.translate("Form", u"\u0406\u041a\u041c-222\u0430", None))
-        self.chooseDateButton.setText(QCoreApplication.translate("Form", u"PushButton", None))
-        self.dateForward.setText(QCoreApplication.translate("Form", u">", None))
-        self.dateBack.setText(QCoreApplication.translate("Form", u"<", None))
         self.day1Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.day2Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.day3Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
@@ -378,5 +380,10 @@ class Ui_Form(object):
         self.day5Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.day6Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
         self.day7Label.setText(QCoreApplication.translate("Form", u"TextLabel", None))
+        self.dateBack.setText(QCoreApplication.translate("Form", u"<", None))
+        self.groupLabel.setText(QCoreApplication.translate("Form", u"\u0406\u041a\u041c-222\u0430", None))
+        self.dateForward.setText(QCoreApplication.translate("Form", u">", None))
+        self.chooseDateButton.setText(QCoreApplication.translate("Form", u"PushButton", None))
+        self.todayButton.setText(QCoreApplication.translate("Form", u"\u0421\u044c\u043e\u0433\u043e\u0434\u043d\u0456", None))
     # retranslateUi
 

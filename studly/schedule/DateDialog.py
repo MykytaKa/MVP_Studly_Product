@@ -3,7 +3,8 @@
 from PySide6.QtWidgets import QPushButton, QDialog, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QSpacerItem
 from PySide6.QtCore import Qt
 from datetime import datetime, timedelta
-from consts import weekDayCoefficient, translatedFullMonth, monthCoefficient
+from consts import weekDayCoefficient, translatedFullMonth
+from PySide6.QtGui import QIcon
 
 class QDateButton(QPushButton):
     def __init__(self, parent=None):
@@ -16,6 +17,8 @@ class QDateButton(QPushButton):
                               color: rgb(32, 69, 71);
                               border-style: none;''')
         self.setCursor(Qt.PointingHandCursor)
+
+
 
     def set_day(self, new_day):
         self.setText(new_day)
@@ -42,6 +45,7 @@ class DateDialog(QDialog):
         super().__init__(parent)
         self.setFixedSize(250, 270)
         self.setWindowTitle('Оберіть дату')
+        self.setWindowIcon(QIcon(':/icons/calendar.png'))
         self.current_month = int(datetime.now().strftime('%m'))
         self.current_year = int(datetime.now().strftime('%Y'))
         self.selected_date = datetime.now().strftime('%d.%m.%Y')

@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridL
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
     QTextEdit, QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -109,6 +110,9 @@ class Ui_Form(object):
 "margin-bottom: 5px;\n"
 "color: rgb(239, 241, 237);\n"
 "border-radius: 15px;")
+        icon = QIcon()
+        icon.addFile(u":/icons/left_alignment.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.leftAlignmentButton.setIcon(icon)
 
         self.gridLayout_6.addWidget(self.leftAlignmentButton, 1, 0, 1, 1)
 
@@ -127,6 +131,9 @@ class Ui_Form(object):
 "margin-bottom: 5px;\n"
 "color: rgb(239, 241, 237);\n"
 "border-radius: 15px;")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/center_alignment.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.centerAlignmentButton.setIcon(icon1)
 
         self.gridLayout_6.addWidget(self.centerAlignmentButton, 2, 0, 1, 1)
 
@@ -143,6 +150,9 @@ class Ui_Form(object):
 "margin-bottom: 5px;\n"
 "color: rgb(239, 241, 237);\n"
 "border-radius: 15px;")
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/right_alignment.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.rightAlignmentButton.setIcon(icon2)
 
         self.gridLayout_6.addWidget(self.rightAlignmentButton, 3, 0, 1, 1)
 
@@ -402,6 +412,9 @@ class Ui_Form(object):
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "border-radius: 10px;")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.submitButton.setIcon(icon3)
 
         self.UpperLayout.addWidget(self.submitButton)
 
@@ -420,6 +433,9 @@ class Ui_Form(object):
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "border-radius: 10px;")
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/undo.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancelButton.setIcon(icon4)
 
         self.UpperLayout.addWidget(self.cancelButton)
 
@@ -554,9 +570,7 @@ class Ui_Form(object):
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p></body></html>", None))
         self.EditingBox.setTitle("")
-        self.leftAlignmentButton.setText(QCoreApplication.translate("Form", u"\u041b\u0456\u0432\u043e\u0440\u0443\u0447", None))
-        self.centerAlignmentButton.setText(QCoreApplication.translate("Form", u"\u041f\u043e \u0446\u0435\u043d\u0442\u0440\u0443", None))
-        self.rightAlignmentButton.setText(QCoreApplication.translate("Form", u"\u041f\u0440\u0430\u0432\u043e\u0440\u0443\u0447", None))
+        self.centerAlignmentButton.setText("")
         self.label.setText(QCoreApplication.translate("Form", u"\u0412\u0438\u0440\u0456\u0432\u043d\u044e\u0432\u0430\u043d\u043d\u044f", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"\u0420\u043e\u0437\u043c\u0456\u0440 \u0442\u0435\u043a\u0441\u0442\u0443", None))
         self.increaseFontButton.setText(QCoreApplication.translate("Form", u"A+", None))

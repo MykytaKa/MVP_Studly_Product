@@ -1,17 +1,25 @@
 # This Python file uses the following encoding: utf-8
-#from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget, QDialog
+# from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QWidget, QDialog, QSpacerItem
 from schedule.ui_scheduleClass import Ui_Form
 from datetime import datetime, timedelta
-from consts import translatedMonth, weekDayCoefficient
 from schedule.DateDialog import DateDialog
+from schedule.meetWidget import meetWidget
+from PySide6.QtCore import QDateTime, QTimer
 from consts import translatedDay, weekDayCoefficient, translatedFullMonth, weekDayPosition
+from DB.connect_to_db import connect_to_database
+from functools import partial
+from DB.connect_to_db import connect_to_database
+
 
 class ScheduleClass(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, user_id = None, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+
+        self.class_id = self.get_class_id(user_id)
+
         self.dateMovement = 0
 
         self.labelsDate = [self.ui.day1Label, self.ui.day2Label, self.ui.day3Label, self.ui.day4Label,
@@ -19,11 +27,38 @@ class ScheduleClass(QWidget):
         self.meetColumns = [self.ui.dayColumn1, self.ui.dayColumn2, self.ui.dayColumn3, self.ui.dayColumn4,
                             self.ui.dayColumn5, self.ui.dayColumn6, self.ui.dayColumn7]
 
+        self.layout_dict = {
+           1: self.ui.dayColumn1Layout,
+           2: self.ui.dayColumn2Layout,
+           3: self.ui.dayColumn3Layout,
+           4: self.ui.dayColumn4Layout,
+           5: self.ui.dayColumn5Layout,
+           6: self.ui.dayColumn6Layout,
+           7: self.ui.dayColumn7Layout
+        }
+
+
         self.ui.dateBack.clicked.connect(self.move_date_back)
         self.ui.dateForward.clicked.connect(self.move_date_forward)
         self.ui.todayButton.clicked.connect(self.set_today_date)
         self.ui.chooseDateButton.clicked.connect(self.set_chosen_date)
+        self.delete_old_meets()
         self.set_dates()
+
+    @connect_to_database
+    def delete_old_meets(cursor, self):
+        cursor.execute("DELETE FROM meets WHERE state_date < date('now')")
+
+
+    @connect_to_database
+    def get_class_id(cursor, self, user_id):
+        cursor.execute('SELECT class_id FROM students WHERE user_id = ?', (user_id,))
+        row = cursor.fetchone()
+        if row is not None:
+            class_id = row[0]
+            return class_id
+        else:
+            return None
 
     def set_chosen_date(self):
         date_dialog = DateDialog()
@@ -36,7 +71,8 @@ class ScheduleClass(QWidget):
                     if (datetime.now() + timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = passed_days - weekDayPosition[(datetime.now() + timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = passed_days - weekDayPosition[(datetime.now() +
+                 timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
                 self.dateMovement = days_lambda
             else:
                 passed_days = 0
@@ -44,7 +80,8 @@ class ScheduleClass(QWidget):
                     if (datetime.now() - timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = - (passed_days) - weekDayPosition[(datetime.now() - timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = - (passed_days) - weekDayPosition[(datetime.now() -
+                     timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
                 self.dateMovement = days_lambda
             self.set_dates()
 
@@ -117,7 +154,6 @@ class ScheduleClass(QWidget):
             label.setText(day_date)
             day_date = datetime.now() + timedelta(days=col+1+coeff+self.dateMovement)
 
-
         if months[0] != months[1]:
             self.ui.chooseDateButton.setFixedWidth(230)
             translated_month1 = translatedFullMonth[months[0].split(" ")[0]]
@@ -133,6 +169,10 @@ class ScheduleClass(QWidget):
             new_text = f'{translated_month} {new_year}'
             self.ui.chooseDateButton.setText(new_text)
 
+        start_date = datetime.now() + timedelta(days=self.dateMovement)
+        end_date = start_date + timedelta(days=6)
+        self.get_meets(start_date, end_date)
+
     def convert_date(self, english_date):
         day, english_day = english_date.split(' ')
         return f'{day} {translatedDay[english_day]}'
@@ -147,3 +187,36 @@ class ScheduleClass(QWidget):
         self.dateMovement += 7
         self.set_dates()
 
+    def clear_layout(self):
+        for layout in self.layout_dict.values():
+            for i in reversed(range(layout.count())):
+                item = layout.itemAt(i)
+                if item is not None and item.widget() is not None and not isinstance(item.widget(), QSpacerItem):
+                    widget_to_remove = item.widget()
+                    widget_to_remove.setParent(None)
+
+    @connect_to_database
+    def get_meets(cursor, self, start_date, end_date):
+        self.clear_layout()
+        print(self.class_id)
+        cursor.execute('SELECT * FROM meets WHERE class_id = ? AND state_date BETWEEN ? AND ? ORDER BY state_date ASC', (self.class_id, start_date, end_date))
+
+        rows = cursor.fetchall()
+
+        widgets = []
+        for row in rows:
+            meet_id = row[0]
+            meet_title = row[1]
+            meet_time = QDateTime.fromString(row[4], "yyyy-MM-dd hh:mm")
+            meet_duration = row[5]
+
+            widget = meetWidget(meet_id, meet_title, meet_time, meet_duration)
+
+            widgets.append((meet_time, widget))
+
+        widgets.sort(key=lambda x: x[0], reverse=True)
+
+        for meet_time, widget in widgets:
+            layout = self.layout_dict.get(meet_time.date().dayOfWeek())
+            if layout:
+                layout.insertWidget(0, widget)

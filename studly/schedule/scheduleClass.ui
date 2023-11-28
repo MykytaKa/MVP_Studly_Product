@@ -53,214 +53,7 @@ border-radius: 10px;</string>
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="1" column="7">
-       <widget class="QPushButton" name="todayButton">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>80</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-border-style: solid;
-background-color: rgba(69, 119, 108, 25);
-border-color: rgb(69, 119, 108);
-border-width: 2px;</string>
-        </property>
-        <property name="text">
-         <string>Сьогодні</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="0" colspan="5">
-       <widget class="QLabel" name="groupLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">padding-right: 5px;
-padding-bottom: 10px;
-padding-left: 95px;</string>
-        </property>
-        <property name="text">
-         <string>ІКМ-222а</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QPushButton" name="chooseDateButton">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-border-style: solid;
-background-color: rgba(69, 119, 108, 25);
-border-color: rgb(69, 119, 108);
-border-width: 2px;</string>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="8">
-       <widget class="QPushButton" name="dateForward">
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-border-style: solid;
-background-color: rgba(69, 119, 108, 25);
-border-color: rgb(69, 119, 108);
-border-width: 2px;</string>
-        </property>
-        <property name="text">
-         <string>&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <widget class="QPushButton" name="dateBack">
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-border-style: solid;
-background-color: rgba(69, 119, 108, 25);
-border-color: rgb(69, 119, 108);
-border-width: 2px;</string>
-        </property>
-        <property name="text">
-         <string>&lt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="9">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="9">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>5</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="2" column="0" colspan="10">
+      <item row="2" column="0" colspan="11">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <layout class="QGridLayout" name="daysContainer">
@@ -281,7 +74,7 @@ border-width: 2px;</string>
                <x>0</x>
                <y>0</y>
                <width>725</width>
-               <height>313</height>
+               <height>319</height>
               </rect>
              </property>
              <property name="sizePolicy">
@@ -321,21 +114,21 @@ border-radius: 0px;
 border-top-left-radius: 10px;
 border-bottom-left-radius: 10px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout">
+                  <layout class="QVBoxLayout" name="dayColumn1Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_3">
@@ -367,21 +160,21 @@ alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_2">
+                  <layout class="QVBoxLayout" name="dayColumn2Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_4">
@@ -413,21 +206,21 @@ alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <layout class="QVBoxLayout" name="dayColumn3Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_5">
@@ -459,21 +252,21 @@ alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <layout class="QVBoxLayout" name="dayColumn4Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_6">
@@ -505,21 +298,21 @@ alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <layout class="QVBoxLayout" name="dayColumn5Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_7">
@@ -551,21 +344,21 @@ alternate-background-color: rgb(120, 180, 167);
 border-color: rgb(120, 180, 167);
 border-radius: 0px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <layout class="QVBoxLayout" name="dayColumn6Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_8">
@@ -599,21 +392,21 @@ border-color: rgb(120, 180, 167);
 border-top-right-radius: 10px;
 border-bottom-right-radius: 10px;</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <layout class="QVBoxLayout" name="dayColumn7Layout">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>6</number>
                    </property>
                    <item>
                     <spacer name="verticalSpacer_9">
@@ -745,6 +538,237 @@ border-bottom-right-radius: 10px;</string>
          </layout>
         </item>
        </layout>
+      </item>
+      <item row="1" column="7">
+       <widget class="QPushButton" name="dateBack">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="5">
+       <widget class="QLabel" name="groupLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>310</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+        </property>
+        <property name="text">
+         <string>ІКМ-222а</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="10">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>13</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="9">
+       <widget class="QPushButton" name="dateForward">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+        </property>
+        <property name="text">
+         <string>&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QPushButton" name="chooseDateButton">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="8">
+       <widget class="QPushButton" name="todayButton">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border-style: solid;
+background-color: rgba(69, 119, 108, 25);
+border-color: rgb(69, 119, 108);
+border-width: 2px;</string>
+        </property>
+        <property name="text">
+         <string>Сьогодні</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="10">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>5</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="5">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>130</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

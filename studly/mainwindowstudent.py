@@ -1,7 +1,7 @@
 from schedule.scheduleClass import ScheduleClass
 from notes.NotesClass import NotesWindow
 from PySide6.QtWidgets import QMainWindow
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtCore import Qt
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -11,15 +11,17 @@ from ui_mainwindowstudent import Ui_MainWindow
 
 
 class MainWindowStudent(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, user_data = None, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.currentWidget = ScheduleClass()
+        self.user_data = None
+
+        self.currentWidget = ScheduleClass(user_data['user_id'])
         self.ui.widgetContainer.addWidget(self.currentWidget)
 
-        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClass()))
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClass(user_data['user_id'])))
         self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
 
         self.unlight_buttons()
@@ -45,6 +47,9 @@ class MainWindowStudent(QMainWindow):
         self.ui.lecturesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.lecturesButton))
         self.ui.teachersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.teachersButton))
         self.ui.notesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.notesButton))
+
+    def resizeEvent(self, event):
+        self.ui.logoLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.logoLabel.size(), Qt.KeepAspectRatio))
 
     def light_chosen_button(self, button):
         self.unlight_buttons()

@@ -10,8 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Student</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="img/img.qrc">
+    <normaloff>:/icons/student.png</normaloff>:/icons/student.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(69, 119, 108);</string>
@@ -48,7 +58,7 @@
           <item>
            <widget class="QLabel" name="logoLabel">
             <property name="text">
-             <string>STUDLY</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -193,7 +203,7 @@ background-color: rgb(55, 95, 86);
 color: rgb(239, 241, 237);</string>
             </property>
             <property name="text">
-             <string>ВИКЛАДАЧІ</string>
+             <string>УЧАСНИКИ</string>
             </property>
            </widget>
           </item>
@@ -363,6 +373,8 @@ border-radius: 30%;</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="img/img.qrc"/>
+ </resources>
  <connections/>
 </ui>
