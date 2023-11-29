@@ -2,11 +2,12 @@ import re
 from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow, QLineEdit
 from PySide6.QtCore import QTimer, QSettings
-#from PyQt5.QtGui import QPixmap
 from login.ui_login import Ui_MainWindow
 from mainwindowstudent import MainWindowStudent
 from mainwindowteacher import MainWindowTeacher
 from registration.registration import RegistrationWindow
+from PySide6.QtGui import QPixmap
+from PySide6.QtCore import Qt
 
 
 class Login(QMainWindow):
@@ -18,6 +19,8 @@ class Login(QMainWindow):
         self.load_settings()
 
         self.timer = None
+
+        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaledToWidth(self.ui.studlyLabel.width()))
 
         self.ui.loginButton.clicked.connect(self.login_user)
         self.ui.show.stateChanged.connect(self.show_hide_password)
@@ -32,6 +35,9 @@ class Login(QMainWindow):
                              "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
         self.redStyle = ("border: 2px solid red; border-style: solid; "
                          "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
+
+        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.studlyLabel.size(),
+                                                                         Qt.KeepAspectRatio))
 
     def load_settings(self):
         settings = QSettings('studly', 'studly')
@@ -113,10 +119,10 @@ class Login(QMainWindow):
             self.close()
 
             if authentication_result["status"] == 'teacher':
-                self.appWindow = MainWindowTeacher()
+                self.appWindow = MainWindowTeacher(authentication_result)
 
             elif authentication_result["status"] == 'student':
-                self.appWindow = MainWindowStudent()
+                self.appWindow = MainWindowStudent(authentication_result)
 
             else:
                 print('error')

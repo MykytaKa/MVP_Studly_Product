@@ -18,12 +18,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
     QSpacerItem, QStatusBar, QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setMinimumSize(QSize(800, 600))
+        icon = QIcon()
+        icon.addFile(u":/icons/student.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"background-color: rgb(69, 119, 108);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -197,7 +202,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Student", None))
-        self.logoLabel.setText(QCoreApplication.translate("MainWindow", u"STUDLY", None))
+        self.logoLabel.setText("")
         self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u041e\u0417\u041a\u041b\u0410\u0414", None))
         self.lecturesButton.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0415\u041a\u0426\u0406\u0407", None))
         self.membersButton.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0427\u0410\u0421\u041d\u0418\u041a\u0418", None))

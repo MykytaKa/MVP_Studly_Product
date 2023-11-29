@@ -1,24 +1,38 @@
 from schedule.scheduleClass import ScheduleClass
-from ui_mainwindowstudent import Ui_MainWindow
 from members.MembersClass import MembersClass
-from PySide6.QtWidgets import QMainWindow
 from notes.NotesClass import NotesWindow
-from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QMainWindow, QStackedWidget
+from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtCore import Qt
+# Important:
+# You need to run the following command to generate the ui_form.py file
+#     pyside6-uic form.ui -o ui_form.py, or
+#     pyside2-uic form.ui -o ui_form.py
+from ui_mainwindowstudent import Ui_MainWindow
 
 
 class MainWindowStudent(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, user_data = None, parent=None):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.currentWidget = ScheduleClass()
-        self.ui.widgetContainer.addWidget(self.currentWidget)
+        self.stackedWidget = QStackedWidget()
 
-        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClass()))
-        self.ui.membersButton.clicked.connect(lambda: self.loadSection(MembersClass()))
-        self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
+        self.widgets = {
+            'schedule': ScheduleClass(user_data['user_id']),
+            'members': MembersClass(),
+            'notes': NotesWindow()
+        }
+
+        for widget in self.widgets.values():
+            self.stackedWidget.addWidget(widget)
+
+        self.ui.widgetContainer.addWidget(self.stackedWidget)
+
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection('schedule'))
+        self.ui.membersButton.clicked.connect(lambda: self.loadSection('members'))
+        self.ui.notesButton.clicked.connect(lambda: self.loadSection('notes'))
 
         self.unlight_buttons()
 
@@ -44,6 +58,9 @@ class MainWindowStudent(QMainWindow):
         self.ui.membersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.membersButton))
         self.ui.notesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.notesButton))
 
+    def resizeEvent(self, event):
+        self.ui.logoLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.logoLabel.size(), Qt.KeepAspectRatio))
+
     def light_chosen_button(self, button):
         self.unlight_buttons()
         font = QFont()
@@ -61,7 +78,4 @@ class MainWindowStudent(QMainWindow):
         self.ui.notesButton.setFont(buttonFont)
 
     def loadSection(self, section):
-        self.currentWidget.close()
-        self.newWidget = section
-        self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
-        self.currentWidget = self.newWidget
+        self.stackedWidget.setCurrentWidget(self.widgets[section])

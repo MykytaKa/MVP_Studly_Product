@@ -186,6 +186,7 @@ class RegistrationWindow(QMainWindow):
         cursor.execute('INSERT INTO users (first_name, last_name, patronymic, phone_number, email, password, status) '
                        'VALUES (?, ?, ?, ?, ?, ?, ?)', data)
 
+
         self.user_id = cursor.lastrowid
 
     @connect_to_database
@@ -207,7 +208,9 @@ class RegistrationWindow(QMainWindow):
             self.window.ui.instituteBox.addItem(name[0])
 
     def registrate_user(self):
-        if self.user['status'] == 'student' and self.window.ui.groupBox.currentText() == "":
+
+        if self.user['status'] == 'student':
+            print("ok")
             self.insert_user_info()
             self.insert_student_info()
 

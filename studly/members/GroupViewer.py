@@ -1,12 +1,12 @@
-# This Python file uses the following encoding: utf-8
-#from PySide6.QtCore import
 from PySide6.QtWidgets import QWidget, QFrame, QLabel, QVBoxLayout, QGridLayout, QHBoxLayout, QSpacerItem, QSizePolicy
 from DB.connect_to_db import connect_to_database
 from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtCore import Signal, Qt
 
+
 class GroupLabel(QWidget):
     clicked = Signal()
+
     def __init__(self):
         super().__init__()
         self.setFixedHeight(30)
@@ -46,8 +46,9 @@ class GroupLabel(QWidget):
 
         self.clicked.emit()
 
+
 class GroupUser(QFrame):
-    def __init__(self, identifier=-1, userType=None, parent=None):
+    def __init__(self, identifier=-1, user_type=None, parent=None):
         super().__init__(parent)
         self.setFixedSize(700, 100)
         self.setStyleSheet('''border-style: solid;
@@ -57,7 +58,7 @@ class GroupUser(QFrame):
                               background-color: rgb(239, 241, 237);
                               ''')
 
-        self.userType = userType
+        self.userType = user_type
         self.identifier = identifier
 
         fullname_font = QFont()
@@ -79,14 +80,14 @@ class GroupUser(QFrame):
         self.positionLabel.setStyleSheet('border-style: none;')
 
         if self.userType == 'student':
-           self.positionLabel.hide()
+            self.positionLabel.hide()
 
         self.infoLabel = QLabel()
         self.infoLabel.setStyleSheet('border-style: none;')
 
         self.mainContainer = QGridLayout()
         self.mainContainer.addWidget(self.avatarLabel, 0, 0, 3, 1)
-        self.mainContainer.addWidget(self.fullNameLabel, 0, 1,)
+        self.mainContainer.addWidget(self.fullNameLabel, 0, 1, )
         self.mainContainer.addWidget(self.positionLabel, 1, 1)
         self.mainContainer.addWidget(self.infoLabel, 2, 1)
 
@@ -96,11 +97,13 @@ class GroupUser(QFrame):
 
     @connect_to_database
     def initialize(cursor, self):
-        cursor.execute('SELECT first_name, last_name, patronymic, phone_number, email FROM users WHERE id = ?', (self.identifier, ))
+        cursor.execute('SELECT first_name, last_name, patronymic, phone_number, email FROM users WHERE id = ?',
+                       (self.identifier,))
 
         first_name, last_name, patronymic, phone_number, email = cursor.fetchone()
         self.fullNameLabel.setText(f'{last_name} {first_name} {patronymic}')
         self.infoLabel.setText(f'{phone_number}   |   {email}')
+        self.infoLabel.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
         if self.userType == 'teacher':
             cursor.execute('SELECT position FROM teachers WHERE user_id = ?', (self.identifier,))
@@ -109,7 +112,7 @@ class GroupUser(QFrame):
 
 
 class GroupViewer(QWidget):
-    def __init__(self, identifier=-1, userType=None, parent=None):
+    def __init__(self, identifier=-1, user_type=None, parent=None):
         super().__init__(parent)
         self.identifier = identifier
 
@@ -119,7 +122,7 @@ class GroupViewer(QWidget):
 
         self.nameLabel = GroupLabel()
         self.nameLabel.setFont(group_name_font)
-        self.nameLabel.clicked.connect(self.hideInfo)
+        self.nameLabel.clicked.connect(self.hide_info)
 
         self.groupLayout = QVBoxLayout()
         self.groupLayout.setContentsMargins(0, 0, 0, 0)
@@ -135,27 +138,27 @@ class GroupViewer(QWidget):
 
         self.setLayout(self.mainContainer)
 
-        self.initialize(userType)
+        self.initialize(user_type)
 
     @connect_to_database
-    def initialize(cursor, self, userType):
-        if userType == 'teacher':
-            cursor.execute('SELECT name FROM departments WHERE id = ?', (self.identifier, ))
+    def initialize(cursor, self, user_type):
+        if user_type == 'teacher':
+            cursor.execute('SELECT name FROM departments WHERE id = ?', (self.identifier,))
         else:
-            cursor.execute('SELECT name FROM classes WHERE id = ?', (self.identifier, ))
+            cursor.execute('SELECT name FROM classes WHERE id = ?', (self.identifier,))
         name = cursor.fetchone()[0]
 
         self.nameLabel.setText(name)
 
-        if userType == 'teacher':
-            cursor.execute('SELECT user_id FROM teachers WHERE department_id = ?', (self.identifier, ))
+        if user_type == 'teacher':
+            cursor.execute('SELECT user_id FROM teachers WHERE department_id = ?', (self.identifier,))
         else:
-            cursor.execute('SELECT user_id FROM students WHERE class_id = ?', (self.identifier, ))
+            cursor.execute('SELECT user_id FROM students WHERE class_id = ?', (self.identifier,))
 
         for user_id in cursor.fetchall():
-            self.groupLayout.addWidget(GroupUser(user_id[0], userType))
+            self.groupLayout.addWidget(GroupUser(user_id[0], user_type))
 
-    def hideInfo(self):
+    def hide_info(self):
         if self.groupWidget.isHidden():
             self.groupWidget.show()
         else:
@@ -163,7 +166,7 @@ class GroupViewer(QWidget):
 
 
 class InstituteViewer(QWidget):
-    def __init__(self, identifier=-1, userType=None, parent=None):
+    def __init__(self, identifier=-1, user_type=None, parent=None):
         super().__init__(parent)
         self.setStyleSheet('color: rgb(32, 69, 71);')
 
@@ -175,7 +178,7 @@ class InstituteViewer(QWidget):
 
         self.nameLabel = GroupLabel()
         self.nameLabel.setFont(institute_name_font)
-        self.nameLabel.clicked.connect(self.hideInfo)
+        self.nameLabel.clicked.connect(self.hide_info)
 
         self.instituteContainer = QVBoxLayout()
         self.instituteContainer.setContentsMargins(0, 0, 0, 0)
@@ -191,25 +194,25 @@ class InstituteViewer(QWidget):
 
         self.setLayout(self.mainContainer)
 
-        self.initialize(userType)
+        self.initialize(user_type)
 
-    def hideInfo(self):
+    def hide_info(self):
         if self.instituteWidget.isHidden():
             self.instituteWidget.show()
         else:
             self.instituteWidget.hide()
 
     @connect_to_database
-    def initialize(cursor, self, userType):
-        cursor.execute('SELECT name FROM institutes WHERE id = ?', (self.identifier, ))
+    def initialize(cursor, self, user_type):
+        cursor.execute('SELECT name FROM institutes WHERE id = ?', (self.identifier,))
 
         name = cursor.fetchone()[0]
         self.nameLabel.setText(name)
 
-        if userType == 'teacher':
-            cursor.execute('SELECT id FROM departments WHERE institute_id = ? ORDER BY name', (self.identifier, ))
+        if user_type == 'teacher':
+            cursor.execute('SELECT id FROM departments WHERE institute_id = ? ORDER BY name', (self.identifier,))
         else:
-            cursor.execute('SELECT id FROM classes WHERE institute_id = ? ORDER BY name', (self.identifier, ))
+            cursor.execute('SELECT id FROM classes WHERE institute_id = ? ORDER BY name', (self.identifier,))
 
         for group_id in cursor.fetchall():
-            self.instituteContainer.addWidget(GroupViewer(group_id[0], userType))
+            self.instituteContainer.addWidget(GroupViewer(group_id[0], user_type))

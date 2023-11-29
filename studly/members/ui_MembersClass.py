@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QLineEdit, QPushButton, QScrollArea, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -157,6 +158,9 @@ class Ui_Form(object):
 "border-width: 2px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "color: rgb(239, 241, 237);")
+        icon = QIcon()
+        icon.addFile(u":/icons/homePage.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.returnButton.setIcon(icon)
 
         self.findLoadLayout.addWidget(self.returnButton)
 
@@ -198,6 +202,9 @@ class Ui_Form(object):
 "border-color: rgb(32, 69, 71);\n"
 "border-width: 2px;\n"
 "border-radius: 10px;")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/search.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.findLoadButton.setIcon(icon1)
 
         self.findLoadLayout.addWidget(self.findLoadButton)
 
@@ -215,6 +222,9 @@ class Ui_Form(object):
 "border-color: rgb(32, 69, 71);\n"
 "border-width: 2px;\n"
 "border-radius: 10px;")
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/clean.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.clearButton.setIcon(icon2)
 
         self.findLoadLayout.addWidget(self.clearButton)
 
@@ -274,10 +284,10 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.teachersButton.setText("")
         self.studentsButton.setText("")
-        self.returnButton.setText(QCoreApplication.translate("Form", u"\u0413\u043e\u043b\u043e\u0432\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430", None))
+        self.returnButton.setText("")
         self.findLoadEdit.setText("")
         self.findLoadEdit.setPlaceholderText(QCoreApplication.translate("Form", u"\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u041f\u0406\u0411 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430", None))
-        self.findLoadButton.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u0448\u0443\u043a", None))
-        self.clearButton.setText(QCoreApplication.translate("Form", u"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438", None))
+        self.findLoadButton.setText("")
+        self.clearButton.setText("")
     # retranslateUi
 

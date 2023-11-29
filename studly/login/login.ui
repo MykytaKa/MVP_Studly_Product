@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../img/img.qrc">
-    <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
+    <normaloff>:/icons/exe_icon.png</normaloff>:/icons/exe_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(32, 69, 71);</string>
@@ -111,6 +111,12 @@ border-radius: 20px;</string>
                <height>84</height>
               </size>
              </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>300</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Ink Free</family>
@@ -122,7 +128,7 @@ border-radius: 20px;</string>
               <string notr="true">color: rgb(32, 69, 71);</string>
              </property>
              <property name="text">
-              <string>Studly</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

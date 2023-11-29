@@ -1,9 +1,27 @@
 <RCC>
     <qresource prefix="/icons">
+        <file>delete.png</file>
+        <file>exe_icon.png</file>
         <file>icon.png</file>
-        <file>hideList.png</file>
-        <file>showList.png</file>
+        <file>newMeet.png</file>
+        <file>calendar.png</file>
         <file>teacher.png</file>
         <file>student.png</file>
+        <file>notes.png</file>
+        <file>teachers.png</file>
+        <file>schedule.png</file>
+        <file>lecture.png</file>
+        <file>team_logo.png</file>
+        <file>right_alignment.png</file>
+        <file>center_alignment.png</file>
+        <file>left_alignment.png</file>
+        <file>save.png</file>
+        <file>undo.png</file>
+        <file>hideList.png</file>
+        <file>showList.png</file>
+        <file>back.png</file>
+        <file>clean.png</file>
+        <file>homePage.png</file>
+        <file>search.png</file>
     </qresource>
 </RCC>

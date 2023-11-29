@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Teacher</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="img/img.qrc">
+    <normaloff>:/icons/teacher.png</normaloff>:/icons/teacher.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(69, 119, 108);</string>
   </property>
@@ -69,8 +73,20 @@
          <layout class="QHBoxLayout" name="buttonsMenu">
           <item>
            <widget class="QLabel" name="logoLabel">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
             <property name="text">
-             <string>STUDLY</string>
+             <string/>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -362,6 +378,7 @@ border-radius: 30%;</string>
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -372,8 +389,9 @@ border-radius: 30%;</string>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="img/img.qrc"/>
+ </resources>
  <connections/>
 </ui>
