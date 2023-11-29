@@ -64,6 +64,7 @@ class Ui_MainWindow(object):
         self.studlyLabel = QLabel(self.widget)
         self.studlyLabel.setObjectName(u"studlyLabel")
         self.studlyLabel.setMinimumSize(QSize(0, 84))
+        self.studlyLabel.setMaximumSize(QSize(300, 300))
         font = QFont()
         font.setFamilies([u"Ink Free"])
         font.setPointSize(35)

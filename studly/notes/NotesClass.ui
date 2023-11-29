@@ -719,7 +719,11 @@ border-color: rgb(32, 69, 71);
 border-radius: 10px;</string>
           </property>
           <property name="text">
-           <string>Назад</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../img/img.qrc">
+            <normaloff>:/icons/homePage.png</normaloff>:/icons/homePage.png</iconset>
           </property>
          </widget>
         </item>

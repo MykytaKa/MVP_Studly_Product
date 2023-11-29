@@ -1,19 +1,15 @@
-# This Python file uses the following encoding: utf-8
-# from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QDialog, QSpacerItem
 from schedule.ui_scheduleClass import Ui_Form
 from datetime import datetime, timedelta
 from schedule.DateDialog import DateDialog
-from schedule.meetWidget import meetWidget
-from PySide6.QtCore import QDateTime, QTimer
+from schedule.MeetWidget import MeetWidget
+from PySide6.QtCore import QDateTime
 from consts import translatedDay, weekDayCoefficient, translatedFullMonth, weekDayPosition
-from DB.connect_to_db import connect_to_database
-from functools import partial
 from DB.connect_to_db import connect_to_database
 
 
 class ScheduleClass(QWidget):
-    def __init__(self, user_id = None, parent=None):
+    def __init__(self, user_id=None, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
@@ -37,7 +33,6 @@ class ScheduleClass(QWidget):
            7: self.ui.dayColumn7Layout
         }
 
-
         self.ui.dateBack.clicked.connect(self.move_date_back)
         self.ui.dateForward.clicked.connect(self.move_date_forward)
         self.ui.todayButton.clicked.connect(self.set_today_date)
@@ -48,7 +43,6 @@ class ScheduleClass(QWidget):
     @connect_to_database
     def delete_old_meets(cursor, self):
         cursor.execute("DELETE FROM meets WHERE state_date < date('now')")
-
 
     @connect_to_database
     def get_class_id(cursor, self, user_id):
@@ -169,8 +163,10 @@ class ScheduleClass(QWidget):
             new_text = f'{translated_month} {new_year}'
             self.ui.chooseDateButton.setText(new_text)
 
-        start_date = datetime.now() + timedelta(days=self.dateMovement)
+        today_with_movement = datetime.now() + timedelta(days=self.dateMovement)
+        start_date = today_with_movement - timedelta(days=(today_with_movement.weekday() - 0) % 7)
         end_date = start_date + timedelta(days=6)
+
         self.get_meets(start_date, end_date)
 
     def convert_date(self, english_date):
@@ -210,7 +206,7 @@ class ScheduleClass(QWidget):
             meet_time = QDateTime.fromString(row[4], "yyyy-MM-dd hh:mm")
             meet_duration = row[5]
 
-            widget = meetWidget(meet_id, meet_title, meet_time, meet_duration)
+            widget = MeetWidget(meet_id, meet_title, meet_time, meet_duration)
 
             widgets.append((meet_time, widget))
 

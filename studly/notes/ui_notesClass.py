@@ -372,6 +372,9 @@ class Ui_Form(object):
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "border-radius: 10px;")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/homePage.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.returnButton.setIcon(icon3)
 
         self.UpperLayout.addWidget(self.returnButton)
 
@@ -412,9 +415,9 @@ class Ui_Form(object):
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "border-radius: 10px;")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.submitButton.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.submitButton.setIcon(icon4)
 
         self.UpperLayout.addWidget(self.submitButton)
 
@@ -433,9 +436,9 @@ class Ui_Form(object):
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
 "border-radius: 10px;")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/undo.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancelButton.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/undo.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancelButton.setIcon(icon5)
 
         self.UpperLayout.addWidget(self.cancelButton)
 
@@ -581,7 +584,7 @@ class Ui_Form(object):
         self.boldButton.setText(QCoreApplication.translate("Form", u"\u0416", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u0424\u043e\u0440\u043c\u0430\u0442\u0443\u0432\u0430\u043d\u043d\u044f\n"
 "\u0442\u0435\u043a\u0441\u0442\u0443", None))
-        self.returnButton.setText(QCoreApplication.translate("Form", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.returnButton.setText("")
         self.titleEdit.setText("")
         self.titleEdit.setPlaceholderText(QCoreApplication.translate("Form", u"\u041d\u0430\u0437\u0432\u0430 \u043d\u043e\u0442\u0430\u0442\u043a\u0430", None))
         self.submitButton.setText(QCoreApplication.translate("Form", u"\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438", None))

@@ -10,9 +10,9 @@ class MeetCreator(QtWidgets.QDialog):
         super().__init__(parent)
         self.ui = Ui_MyDialog()
         self.ui.setupUi(self)
-        self.ui.dateTimeEdit.setDateTime(QDateTime((datetime.now() + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)))
+        self.ui.dateTimeEdit.setDateTime(QDateTime((datetime.now() + timedelta(hours=1)).replace(minute=0, second=0,
+                                                                                                 microsecond=0)))
 
-#        self.ui.createButton.clicked.connect(self.send_values)
         self.get_groups()
 
     @connect_to_database
@@ -23,7 +23,6 @@ class MeetCreator(QtWidgets.QDialog):
         self.ui.groupEdit.clear()
         for item in class_names:
             self.ui.groupEdit.addItem(item[0])
-
 
     def send_values(self):
         self.accept()

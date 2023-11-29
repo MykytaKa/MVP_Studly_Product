@@ -17,5 +17,11 @@
         <file>left_alignment.png</file>
         <file>save.png</file>
         <file>undo.png</file>
+        <file>hideList.png</file>
+        <file>showList.png</file>
+        <file>back.png</file>
+        <file>clean.png</file>
+        <file>homePage.png</file>
+        <file>search.png</file>
     </qresource>
 </RCC>

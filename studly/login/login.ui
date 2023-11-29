@@ -111,6 +111,12 @@ border-radius: 20px;</string>
                <height>84</height>
               </size>
              </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>300</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Ink Free</family>

@@ -1,6 +1,7 @@
 from schedule.scheduleClass import ScheduleClass
+from members.MembersClass import MembersClass
 from notes.NotesClass import NotesWindow
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QStackedWidget
 from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtCore import Qt
 # Important:
@@ -16,13 +17,22 @@ class MainWindowStudent(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.user_data = None
+        self.stackedWidget = QStackedWidget()
 
-        self.currentWidget = ScheduleClass(user_data['user_id'])
-        self.ui.widgetContainer.addWidget(self.currentWidget)
+        self.widgets = {
+            'schedule': ScheduleClass(user_data['user_id']),
+            'members': MembersClass(),
+            'notes': NotesWindow()
+        }
 
-        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection(ScheduleClass(user_data['user_id'])))
-        self.ui.notesButton.clicked.connect(lambda: self.loadSection(NotesWindow()))
+        for widget in self.widgets.values():
+            self.stackedWidget.addWidget(widget)
+
+        self.ui.widgetContainer.addWidget(self.stackedWidget)
+
+        self.ui.scheduleButton.clicked.connect(lambda: self.loadSection('schedule'))
+        self.ui.membersButton.clicked.connect(lambda: self.loadSection('members'))
+        self.ui.notesButton.clicked.connect(lambda: self.loadSection('notes'))
 
         self.unlight_buttons()
 
@@ -31,7 +41,7 @@ class MainWindowStudent(QMainWindow):
 
         self.ui.scheduleButton.setFont(buttonFont)
         self.ui.lecturesButton.setFont(buttonFont)
-        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.membersButton.setFont(buttonFont)
         self.ui.notesButton.setFont(buttonFont)
 
         buttonFont.setPointSize(11)
@@ -40,12 +50,12 @@ class MainWindowStudent(QMainWindow):
 
         self.ui.scheduleButton.setCursor(Qt.PointingHandCursor)
         self.ui.lecturesButton.setCursor(Qt.PointingHandCursor)
-        self.ui.teachersButton.setCursor(Qt.PointingHandCursor)
+        self.ui.membersButton.setCursor(Qt.PointingHandCursor)
         self.ui.notesButton.setCursor(Qt.PointingHandCursor)
 
         self.ui.scheduleButton.clicked.connect(lambda: self.light_chosen_button(self.ui.scheduleButton))
         self.ui.lecturesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.lecturesButton))
-        self.ui.teachersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.teachersButton))
+        self.ui.membersButton.clicked.connect(lambda: self.light_chosen_button(self.ui.membersButton))
         self.ui.notesButton.clicked.connect(lambda: self.light_chosen_button(self.ui.notesButton))
 
     def resizeEvent(self, event):
@@ -64,11 +74,8 @@ class MainWindowStudent(QMainWindow):
 
         self.ui.scheduleButton.setFont(buttonFont)
         self.ui.lecturesButton.setFont(buttonFont)
-        self.ui.teachersButton.setFont(buttonFont)
+        self.ui.membersButton.setFont(buttonFont)
         self.ui.notesButton.setFont(buttonFont)
 
     def loadSection(self, section):
-        self.currentWidget.close()
-        self.newWidget = section
-        self.ui.widgetContainer.replaceWidget(self.currentWidget, self.newWidget)
-        self.currentWidget = self.newWidget
+        self.stackedWidget.setCurrentWidget(self.widgets[section])

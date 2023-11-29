@@ -25,6 +25,10 @@
         "notes/NotesClass.ui",
         "schedule/DateDialog.py",
         "about/about.ui",
-        "about/about.py"
+        "about/about.py",
+        "members/MembersClass.py",
+        "members/MembersClass.ui",
+        "members/GroupViewer.py",
+        "members/ui_MembersClass.py"
     ]
 }

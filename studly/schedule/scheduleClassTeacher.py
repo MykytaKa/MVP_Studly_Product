@@ -1,17 +1,17 @@
-# This Python file uses the following encoding: utf-8
 from PySide6.QtWidgets import QWidget, QDialog, QSpacerItem
 from schedule.ui_scheduleClassTeacher import Ui_Form
 from datetime import datetime, timedelta
 from schedule.meetCreator import MeetCreator
-from schedule.meetWidget import meetWidget
+from schedule.MeetWidget import MeetWidget
 from schedule.DateDialog import DateDialog
 from consts import translatedDay, weekDayCoefficient, translatedFullMonth, weekDayPosition
 from PySide6.QtCore import QDateTime, QTimer
 from DB.connect_to_db import connect_to_database
 from functools import partial
 
+
 class ScheduleClassTeacher(QWidget):
-    def __init__(self, user_id = None, parent=None):
+    def __init__(self, user_id=None, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
@@ -19,15 +19,14 @@ class ScheduleClassTeacher(QWidget):
         self.window = None
         self.teacher_id = user_id
 
-
         self.layout_dict = {
-           1: self.ui.dayColumn1Layout,
-           2: self.ui.dayColumn2Layout,
-           3: self.ui.dayColumn3Layout,
-           4: self.ui.dayColumn4Layout,
-           5: self.ui.dayColumn5Layout,
-           6: self.ui.dayColumn6Layout,
-           7: self.ui.dayColumn7Layout
+            1: self.ui.dayColumn1Layout,
+            2: self.ui.dayColumn2Layout,
+            3: self.ui.dayColumn3Layout,
+            4: self.ui.dayColumn4Layout,
+            5: self.ui.dayColumn5Layout,
+            6: self.ui.dayColumn6Layout,
+            7: self.ui.dayColumn7Layout
         }
 
         # Connect необхідні для роботи кнопок
@@ -63,7 +62,9 @@ class ScheduleClassTeacher(QWidget):
                     if (datetime.now() + timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = passed_days - weekDayPosition[(datetime.now() + timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = (passed_days - weekDayPosition[(datetime.now() +
+                                                              timedelta(days=passed_days)).strftime('%A')] +
+                               weekDayPosition[(datetime.now()).strftime('%A')])
                 self.dateMovement = days_lambda
             else:
                 passed_days = 0
@@ -71,7 +72,9 @@ class ScheduleClassTeacher(QWidget):
                     if (datetime.now() - timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = - (passed_days) - weekDayPosition[(datetime.now() - timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = (- (passed_days) - weekDayPosition[(datetime.now() -
+                                                                  timedelta(days=passed_days)).strftime('%A')] +
+                               weekDayPosition[(datetime.now()).strftime('%A')])
                 self.dateMovement = days_lambda
             self.set_dates()
 
@@ -83,7 +86,7 @@ class ScheduleClassTeacher(QWidget):
         months = []
         day = int(datetime.now().strftime('%w'))
         coeff = weekDayCoefficient[day]
-        day_date = datetime.now() + timedelta(days=coeff+self.dateMovement)
+        day_date = datetime.now() + timedelta(days=coeff + self.dateMovement)
         for col in range(7):
             if col == 0 or col == 6:
                 months.append(f'{day_date.strftime("%B %Y")} р.')
@@ -142,7 +145,7 @@ class ScheduleClassTeacher(QWidget):
 
             day_date = self.convert_date(day_date.strftime('%d %A'))
             label.setText(day_date)
-            day_date = datetime.now() + timedelta(days=col+1+coeff+self.dateMovement)
+            day_date = datetime.now() + timedelta(days=col + 1 + coeff + self.dateMovement)
 
         if months[0] != months[1]:
             self.ui.chooseDateButton.setFixedWidth(230)
@@ -188,34 +191,41 @@ class ScheduleClassTeacher(QWidget):
 
     @connect_to_database
     def create_meet(cursor, self):
-        meetTime = self.window.ui.dateTimeEdit.dateTime()
+        meet_time = self.window.ui.dateTimeEdit.dateTime()
         current_datetime = datetime.now()
-        if meetTime.toPython() < current_datetime:
+        if meet_time.toPython() < current_datetime:
             self.window.ui.errorLabel.setText("Зустріч не може бути створена на минулий час!")
 
-            self.window.ui.dateTimeEdit.setStyleSheet("border-radius: 10px; border-style: solid; border-color: rgb(255, 0, 0); border-width: 2px;")
+            self.window.ui.dateTimeEdit.setStyleSheet(
+                "border-radius: 10px; border-style: solid; border-color: rgb(255, 0, 0); border-width: 2px;")
             QTimer.singleShot(3000, lambda: self.window.ui.errorLabel.setText(''))
-            QTimer.singleShot(3000, lambda: self.window.ui.dateTimeEdit.setStyleSheet("border-radius: 10px; border-style: solid; border-color: rgb(69, 119, 108); border-width: 2px;"))
+            QTimer.singleShot(3000, lambda: self.window.ui.dateTimeEdit.setStyleSheet("border-radius: 10px; "
+                                                                                      "border-style: solid; "
+                                                                                      "border-color: rgb(69, 119, 108);"
+                                                                                      "border-width: 2px;"))
             return
 
-        meetTitle = self.window.ui.nameEdit.text()
-        if meetTitle == '':
+        meet_title = self.window.ui.nameEdit.text()
+        if meet_title == '':
             self.window.ui.errorLabel.setText("Введіть назву зустрічі!")
 
-            self.window.ui.nameEdit.setStyleSheet("border-radius: 10px; border-style: solid; border-color: rgb(255, 0, 0); border-width: 2px;")
+            self.window.ui.nameEdit.setStyleSheet(
+                "border-radius: 10px; border-style: solid; border-color: rgb(255, 0, 0); border-width: 2px;")
             QTimer.singleShot(3000, lambda: self.window.ui.errorLabel.setText(''))
-            QTimer.singleShot(3000, lambda: self.window.ui.nameEdit.setStyleSheet("border-radius: 10px; border-style: solid; border-color: rgb(69, 119, 108); border-width: 2px;"))
+            QTimer.singleShot(3000, lambda: self.window.ui.nameEdit.setStyleSheet(
+                "border-radius: 10px; border-style: solid; border-color: rgb(69, 119, 108); border-width: 2px;"))
             return
 
         self.window.send_values()
 
-        meetDuration = self.window.ui.duration.value()
+        meet_duration = self.window.ui.duration.value()
         class_id = self.window.ui.groupEdit.currentIndex() + 1
 
-        formatted_datetime = meetTime.toString("yyyy-MM-dd hh:mm")  # Используйте формат без секунд
+        formatted_datetime = meet_time.toString("yyyy-MM-dd hh:mm")  # Используйте формат без секунд
 
         cursor.execute('INSERT INTO meets (name, class_id, teacher_id, state_date, duration) '
-                       'VALUES (?, ?, ?, ?, ?)', (meetTitle, class_id, self.teacher_id, formatted_datetime, meetDuration))
+                       'VALUES (?, ?, ?, ?, ?)',
+                       (meet_title, class_id, self.teacher_id, formatted_datetime, meet_duration))
 
         today_with_movement = datetime.now() + timedelta(days=self.dateMovement)
         start_date = today_with_movement - timedelta(days=(today_with_movement.weekday() - 0) % 7)
@@ -235,7 +245,9 @@ class ScheduleClassTeacher(QWidget):
     def get_meets(cursor, self, start_date, end_date):
         self.clear_layout()
 
-        cursor.execute('SELECT * FROM meets WHERE teacher_id = ? AND state_date BETWEEN ? AND ? ORDER BY state_date ASC', (self.teacher_id, start_date, end_date))
+        cursor.execute(
+            'SELECT * FROM meets WHERE teacher_id = ? AND state_date BETWEEN ? AND ? ORDER BY state_date ASC',
+            (self.teacher_id, start_date, end_date))
         rows = cursor.fetchall()
 
         widgets = []
@@ -245,7 +257,7 @@ class ScheduleClassTeacher(QWidget):
             meet_time = QDateTime.fromString(row[4], "yyyy-MM-dd hh:mm")
             meet_duration = row[5]
 
-            widget = meetWidget(meet_id, meet_title, meet_time, meet_duration, self.teacher_id)
+            widget = MeetWidget(meet_id, meet_title, meet_time, meet_duration, self.teacher_id)
             widget.deleteButton.clicked.connect(partial(self.delete_meet, widget))
 
             widgets.append((meet_time, widget))

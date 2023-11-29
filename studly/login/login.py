@@ -36,7 +36,8 @@ class Login(QMainWindow):
         self.redStyle = ("border: 2px solid red; border-style: solid; "
                          "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
 
-        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.studlyLabel.size(), Qt.KeepAspectRatio))
+        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.studlyLabel.size(),
+                                                                         Qt.KeepAspectRatio))
 
     def load_settings(self):
         settings = QSettings('studly', 'studly')

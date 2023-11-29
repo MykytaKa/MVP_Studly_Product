@@ -206,7 +206,7 @@ color: rgb(239, 241, 237);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="teachersButton">
+           <widget class="QPushButton" name="membersButton">
             <property name="minimumSize">
              <size>
               <width>120</width>
