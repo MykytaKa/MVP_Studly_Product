@@ -61,19 +61,27 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(10, -1, 10, -1)
+        self.verticalSpacer_4 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_4)
+
         self.studlyLabel = QLabel(self.widget)
         self.studlyLabel.setObjectName(u"studlyLabel")
-        self.studlyLabel.setMinimumSize(QSize(0, 84))
-        self.studlyLabel.setMaximumSize(QSize(300, 300))
+        self.studlyLabel.setMinimumSize(QSize(0, 50))
+        self.studlyLabel.setMaximumSize(QSize(300, 50))
         font = QFont()
         font.setFamilies([u"Ink Free"])
         font.setPointSize(35)
         font.setBold(False)
         self.studlyLabel.setFont(font)
-        self.studlyLabel.setStyleSheet(u"color: rgb(32, 69, 71);")
+        self.studlyLabel.setStyleSheet(u"image: url(:/icons/icon.png);")
         self.studlyLabel.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.studlyLabel)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_3)
 
         self.errorLabel = QLabel(self.widget)
         self.errorLabel.setObjectName(u"errorLabel")

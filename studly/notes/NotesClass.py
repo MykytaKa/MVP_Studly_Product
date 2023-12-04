@@ -1,4 +1,3 @@
-# This Python file uses the following encoding: utf-8
 from PySide6.QtCore import Qt, Signal, QTimer
 from PySide6.QtWidgets import (QWidget, QLabel, QVBoxLayout, QGridLayout, QSizePolicy,
                                QGroupBox, QPushButton, QSpacerItem)
@@ -343,13 +342,13 @@ class NotesWindow(QWidget):
         self.cursor = self.ui.descriptionEdit.textCursor()
         format = self.cursor.charFormat()
         font = format.font()
-        fontSize = font.pointSize()
-        newFontSize = fontSize + value
+        font_size = font.pointSize()
+        new_font_size = font_size + value
 
-        font.setPointSize(newFontSize)
+        font.setPointSize(new_font_size)
         format.setFont(font)
 
-        if (self.cursor.selectedText() == ''):
+        if self.cursor.selectedText() == '':
             self.ui.descriptionEdit.setFont(font)
         else:
             self.cursor.setCharFormat(format)

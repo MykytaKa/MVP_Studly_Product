@@ -1,11 +1,12 @@
 from PySide6.QtWidgets import QLabel, QPushButton, QDialog, QVBoxLayout, QLineEdit, QMessageBox, QWidget
 from PySide6.QtGui import QPixmap, QPainter, QColor, Qt, QImage, QPainterPath, QIcon
+from PySide6.QtCore import QTimer
 from userAccount.ui_userAccountTeacher import Ui_UserAccountTeacher
 from DB.connect_to_db import connect_to_database
-from PySide6.QtCore import QTimer
+
 
 class UserAccountTeacher(QWidget):
-    def __init__(self, user_id = None, parent=None):
+    def __init__(self, user_id=None, parent=None):
         super().__init__(parent)
         self.ui = Ui_UserAccountTeacher()
         self.ui.setupUi(self)
@@ -13,7 +14,6 @@ class UserAccountTeacher(QWidget):
         self.isLogout = False
 
         # Подключение события кнопки
-#        self.ui.choosePhoto.clicked.connect(self.choose_photo)
         self.ui.editAcc.clicked.connect(self.edit_labels)
         self.ui.logout.clicked.connect(self.logout)
         self.set_user_data()
@@ -46,7 +46,11 @@ class UserAccountTeacher(QWidget):
 
         # Photo and description
         self.ui.description.setText(user_data['account_description'])
-        self.set_photo(user_data['way_to_photo'])
+
+        if user_data['way_to_photo'] is not None:
+            self.set_photo(user_data['way_to_photo'])
+        else:
+            self.ui.photoLabel.setText(''.join([user_data['first_name'][0].upper(), user_data['last_name'][0].upper()]))
 
         # University info
         cursor.execute("""
@@ -58,28 +62,20 @@ class UserAccountTeacher(QWidget):
         WHERE teachers.user_id = ?
         """, (self.user_id,))
 
-        position, department_name, institute_name  = cursor.fetchone()
+        position, department_name, institute_name = cursor.fetchone()
 
         self.ui.position.setText(position)
         self.ui.department.setText(department_name)
         self.ui.institute.setText(institute_name)
 
-
     def logout(self):
-        if QMessageBox.question(None, "Вийти", "Ви впевнені, що бажаєте вийти з акаунту?", QMessageBox.Yes | QMessageBox.No) == QMessageBox.Yes:
+        if QMessageBox.question(None, "Вийти", "Ви впевнені, що бажаєте вийти з акаунту?",
+                                QMessageBox.Yes | QMessageBox.No) == QMessageBox.Yes:
             self.isLogout = True
-
-#    @connect_to_database
-#    def choose_photo(cursor, self):
-#        options = QFileDialog.Options()
-#        options |= QFileDialog.DontUseNativeDialog
-#        file_name, _ = QFileDialog.getOpenFileName(self, "Оберіть зображення", "", "Images (*.png *.jpg *.bmp *.jpeg);;All Files (*)")
-#        if file_name:
-#            self.set_photo(file_name)
-#            cursor.execute('UPDATE users SET way_to_photo = ? WHERE id = ?', (file_name, self.user_id))
 
     def set_photo(self, file_path):
         if file_path:
+            self.ui.photoLabel.setText('')
             # Загружаем изображение
             original_pixmap = QPixmap(file_path)
 
@@ -97,7 +93,7 @@ class UserAccountTeacher(QWidget):
 
             # Создаем QPainterPath в форме круга с динамическим размером
             path = QPainterPath()
-            path.addEllipse(original_pixmap.rect()) # Тут змінив на розміри самого лейбла
+            path.addEllipse(original_pixmap.rect())  # Тут змінив на розміри самого лейбла
 
             # Создаем QPixmap для отображения обрезанного изображения
             cropped_pixmap = QPixmap(original_pixmap.size())
@@ -116,40 +112,38 @@ class UserAccountTeacher(QWidget):
             # Устанавливаем масштабированное изображение в лейбл
             self.ui.photoLabel.setPixmap(scaled_cropped_pixmap)
 
-
     def scale_pixmap_to_label(self, pixmap):
         # Получаем размеры лейбла
         label_width = self.ui.photoLabel.width()
         label_height = self.ui.photoLabel.height()
 
         # Масштабируем изображение под размер лейбла
-        scaled_pixmap = pixmap.scaled(label_width-5, label_height-5, Qt.IgnoreAspectRatio)
+        scaled_pixmap = pixmap.scaled(label_width - 5, label_height - 5, Qt.IgnoreAspectRatio)
 
         return scaled_pixmap
 
     @connect_to_database
     def edit_labels(cursor, self):
-        dialog = EditLabelsDialog(self.ui.firstName.text(), self.ui.lastName.text(), self.ui.patronymic.text(), self.ui.position.text(), self.ui.description.text(), self.ui.phone.text(), self.ui.email.text())
+        dialog = EditLabelsDialog(self.ui.firstName.text(), self.ui.lastName.text(), self.ui.patronymic.text(),
+                                  self.ui.position.text(), self.ui.description.text(), self.ui.phone.text(),
+                                  self.ui.email.text())
         result = dialog.exec_()
 
         # Применяем изменения, если пользователь подтвердил
         if result == QDialog.Accepted:
-
-#            self.ui.firstName.setText(dialog.labelFirstName_edit.text())
-#            self.ui.lastName.setText(dialog.labelLastName_edit.text())
-#            self.ui.patronymic.setText(dialog.labelPatronymic_edit.text())
-#            self.ui.position.setText(dialog.labelPositionEdit_edit.text())
-#            self.ui.description.setText(dialog.labelDescription_edit.text())
-#            self.ui.phone.setText(dialog.labelPhoneEdit_edit.text())
-#            self.ui.email.setText(dialog.labelEmailEdit_edit.text())
-
-            cursor.execute("UPDATE users SET first_name = ?, last_name = ?, patronymic = ?, account_description = ?, phone_number = ?, email = ? WHERE id = ?",
-            (dialog.labelFirstName_edit.text(), dialog.labelLastName_edit.text(), dialog.labelPatronymic_edit.text(), dialog.labelDescription_edit.text(),
-            dialog.labelPhoneEdit_edit.text(), dialog.labelEmailEdit_edit.text(), self.user_id))
-            cursor.execute("UPDATE teachers SET position = ? WHERE user_id = ?", (dialog.labelPositionEdit_edit.text(), self.user_id))
+            cursor.execute("UPDATE users "
+                           "SET first_name = ?, last_name = ?, patronymic = ?, account_description = ?, "
+                           "phone_number = ?, email = ? "
+                           "WHERE id = ?",
+                           (dialog.labelFirstName_edit.text(), dialog.labelLastName_edit.text(),
+                            dialog.labelPatronymic_edit.text(),
+                            dialog.labelDescription_edit.text(), dialog.labelPhoneEdit_edit.text(),
+                            dialog.labelEmailEdit_edit.text(), self.user_id))
+            cursor.execute("UPDATE teachers "
+                           "SET position = ? "
+                           "WHERE user_id = ?", (dialog.labelPositionEdit_edit.text(), self.user_id))
 
             QTimer.singleShot(100, self.set_user_data)
-
 
 
 class EditLabelsDialog(QDialog):
@@ -169,7 +163,6 @@ class EditLabelsDialog(QDialog):
         self.labelD = QLabel('Опис', self)
         self.labelPhone = QLabel('Телефон', self)
         self.labelEmail = QLabel('Пошта', self)
-
 
         # Создаем поля ввода для редактирования лейблов
         self.labelFirstName_edit = QLineEdit(self)
@@ -254,7 +247,6 @@ class EditLabelsDialog(QDialog):
         self.labelPhoneEdit_edit.setMaxLength(14)
         self.labelEmailEdit_edit.setMaxLength(100)
 
-
         # Создаем кнопку подтверждения редактирования
         self.confirm_button = QPushButton("Зберегти", self)
         self.confirm_button.clicked.connect(self.accept)
@@ -303,4 +295,3 @@ class EditLabelsDialog(QDialog):
         self.labelPhoneEdit_edit.setCursor(Qt.IBeamCursor)
         self.labelEmailEdit_edit.setCursor(Qt.IBeamCursor)
         self.confirm_button.setCursor(Qt.PointingHandCursor)
-

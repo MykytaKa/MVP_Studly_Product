@@ -1,13 +1,13 @@
 from PySide6.QtWidgets import QWidget, QDialog, QSpacerItem
+from PySide6.QtCore import QDateTime, QTimer
 from schedule.ui_scheduleClassTeacher import Ui_Form
 from datetime import datetime, timedelta
 from schedule.meetCreator import MeetCreator
 from schedule.MeetWidget import MeetWidget
 from schedule.DateDialog import DateDialog
 from consts import translatedDay, weekDayCoefficient, translatedFullMonth, weekDayPosition
-from PySide6.QtCore import QDateTime, QTimer
-from DB.connect_to_db import connect_to_database
 from functools import partial
+from DB.connect_to_db import connect_to_database
 
 
 class ScheduleClassTeacher(QWidget):
@@ -72,8 +72,8 @@ class ScheduleClassTeacher(QWidget):
                     if (datetime.now() - timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = (- (passed_days) - weekDayPosition[(datetime.now() -
-                                                                  timedelta(days=passed_days)).strftime('%A')] +
+                days_lambda = (- passed_days - weekDayPosition[(datetime.now() -
+                                                                timedelta(days=passed_days)).strftime('%A')] +
                                weekDayPosition[(datetime.now()).strftime('%A')])
                 self.dateMovement = days_lambda
             self.set_dates()
@@ -245,9 +245,11 @@ class ScheduleClassTeacher(QWidget):
     def get_meets(cursor, self, start_date, end_date):
         self.clear_layout()
 
-        cursor.execute(
-            'SELECT * FROM meets WHERE teacher_id = ? AND state_date BETWEEN ? AND ? ORDER BY state_date ASC',
-            (self.teacher_id, start_date, end_date))
+        cursor.execute('SELECT * '
+                       'FROM meets '
+                       'WHERE teacher_id = ? AND state_date BETWEEN ? AND ? '
+                       'ORDER BY state_date ASC',
+                       (self.teacher_id, start_date, end_date))
         rows = cursor.fetchall()
 
         widgets = []

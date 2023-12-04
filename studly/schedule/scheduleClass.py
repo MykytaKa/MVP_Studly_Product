@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import QWidget, QDialog, QSpacerItem
+from PySide6.QtCore import QDateTime
 from schedule.ui_scheduleClass import Ui_Form
 from datetime import datetime, timedelta
 from schedule.DateDialog import DateDialog
 from schedule.MeetWidget import MeetWidget
-from PySide6.QtCore import QDateTime
 from consts import translatedDay, weekDayCoefficient, translatedFullMonth, weekDayPosition
 from DB.connect_to_db import connect_to_database
 
@@ -25,13 +25,13 @@ class ScheduleClass(QWidget):
                             self.ui.dayColumn5, self.ui.dayColumn6, self.ui.dayColumn7]
 
         self.layout_dict = {
-           1: self.ui.dayColumn1Layout,
-           2: self.ui.dayColumn2Layout,
-           3: self.ui.dayColumn3Layout,
-           4: self.ui.dayColumn4Layout,
-           5: self.ui.dayColumn5Layout,
-           6: self.ui.dayColumn6Layout,
-           7: self.ui.dayColumn7Layout
+            1: self.ui.dayColumn1Layout,
+            2: self.ui.dayColumn2Layout,
+            3: self.ui.dayColumn3Layout,
+            4: self.ui.dayColumn4Layout,
+            5: self.ui.dayColumn5Layout,
+            6: self.ui.dayColumn6Layout,
+            7: self.ui.dayColumn7Layout
         }
 
         self.ui.dateBack.clicked.connect(self.move_date_back)
@@ -57,7 +57,10 @@ class ScheduleClass(QWidget):
 
     @connect_to_database
     def set_class_name(cursor, self, user_id):
-        cursor.execute('SELECT classes.name FROM students JOIN classes ON students.class_id = classes.id WHERE students.user_id = ?', (user_id,))
+        cursor.execute('SELECT classes.name '
+                       'FROM students '
+                       'JOIN classes ON students.class_id = classes.id '
+                       'WHERE students.user_id = ?', (user_id,))
         result = cursor.fetchone()
         self.ui.groupLabel.setText(result[0])
 
@@ -72,8 +75,9 @@ class ScheduleClass(QWidget):
                     if (datetime.now() + timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = passed_days - weekDayPosition[(datetime.now() +
-                 timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = (passed_days - weekDayPosition[(datetime.now() +
+                                                             timedelta(days=passed_days)).strftime('%A')] +
+                               weekDayPosition[(datetime.now()).strftime('%A')])
                 self.dateMovement = days_lambda
             else:
                 passed_days = 0
@@ -81,8 +85,9 @@ class ScheduleClass(QWidget):
                     if (datetime.now() - timedelta(days=passed_days)).strftime('%d.%m.%Y') == selected_date:
                         break
                     passed_days += 1
-                days_lambda = - (passed_days) - weekDayPosition[(datetime.now() -
-                     timedelta(days=passed_days)).strftime('%A')] + weekDayPosition[(datetime.now()).strftime('%A')]
+                days_lambda = (- passed_days - weekDayPosition[(datetime.now() -
+                                                               timedelta(days=passed_days)).strftime('%A')] +
+                               weekDayPosition[(datetime.now()).strftime('%A')])
                 self.dateMovement = days_lambda
             self.set_dates()
 
@@ -94,7 +99,7 @@ class ScheduleClass(QWidget):
         months = []
         day = int(datetime.now().strftime('%w'))
         coeff = weekDayCoefficient[day]
-        day_date = datetime.now() + timedelta(days=coeff+self.dateMovement)
+        day_date = datetime.now() + timedelta(days=coeff + self.dateMovement)
         for col in range(7):
             if col == 0 or col == 6:
                 months.append(f'{day_date.strftime("%B %Y")} р.')
@@ -153,7 +158,7 @@ class ScheduleClass(QWidget):
 
             day_date = self.convert_date(day_date.strftime('%d %A'))
             label.setText(day_date)
-            day_date = datetime.now() + timedelta(days=col+1+coeff+self.dateMovement)
+            day_date = datetime.now() + timedelta(days=col + 1 + coeff + self.dateMovement)
 
         if months[0] != months[1]:
             self.ui.chooseDateButton.setFixedWidth(230)
@@ -202,7 +207,11 @@ class ScheduleClass(QWidget):
     def get_meets(cursor, self, start_date, end_date):
         self.clear_layout()
         print(self.class_id)
-        cursor.execute('SELECT * FROM meets WHERE class_id = ? AND state_date BETWEEN ? AND ? ORDER BY state_date ASC', (self.class_id, start_date, end_date))
+        cursor.execute('SELECT * '
+                       'FROM meets '
+                       'WHERE class_id = ? AND state_date BETWEEN ? AND ? '
+                       'ORDER BY state_date ASC',
+                       (self.class_id, start_date, end_date))
 
         rows = cursor.fetchall()
 

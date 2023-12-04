@@ -218,11 +218,16 @@ class Ui_UserAccountStudent(object):
         sizePolicy.setHeightForWidth(self.photoLabel.sizePolicy().hasHeightForWidth())
         self.photoLabel.setSizePolicy(sizePolicy)
         self.photoLabel.setMinimumSize(QSize(200, 200))
+        font2 = QFont()
+        font2.setPointSize(48)
+        font2.setBold(True)
+        self.photoLabel.setFont(font2)
         self.photoLabel.setStyleSheet(u"border-style: solid;\n"
 "border-width: 2px;\n"
 "border-color: rgb(69, 119, 108);\n"
 "border-radius: 100%;\n"
-"background-color: rgb(127, 180, 175);")
+"background-color: rgb(127, 180, 175);\n"
+"color: rgb(255, 255, 255);")
         self.photoLabel.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.photoLabel)
@@ -344,7 +349,7 @@ class Ui_UserAccountStudent(object):
         self.emailLabel.setText("")
         self.phone.setText(QCoreApplication.translate("UserAccountStudent", u"+380971111111", None))
         self.phoneLabel.setText("")
-        self.photoLabel.setText(QCoreApplication.translate("UserAccountStudent", u"\u0424\u043e\u0442\u043e \u043f\u0440\u043e\u0444\u0456\u043b\u044e", None))
+        self.photoLabel.setText(QCoreApplication.translate("UserAccountStudent", u"\u0410\u0428", None))
         self.choosePhoto.setText(QCoreApplication.translate("UserAccountStudent", u"\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0444\u043e\u0442\u043e", None))
         self.editAcc.setText(QCoreApplication.translate("UserAccountStudent", u"\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u043e\u0444\u0456\u043b\u044c", None))
         self.logout.setText(QCoreApplication.translate("UserAccountStudent", u"\u0412\u0438\u0439\u0442\u0438 \u0437 \u0430\u043a\u0430\u0443\u043d\u0442\u0443", None))

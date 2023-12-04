@@ -1,26 +1,23 @@
-import re
-from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow, QLineEdit
 from PySide6.QtCore import QTimer, QSettings
 from login.ui_login import Ui_MainWindow
 from mainwindowstudent import MainWindowStudent
 from mainwindowteacher import MainWindowTeacher
 from registration.registration import RegistrationWindow
-from PySide6.QtGui import QPixmap
-from PySide6.QtCore import Qt
-
+import re
+from DB.connect_to_db import connect_to_database
 
 class Login(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.registration = None
+        self.appWindow = None
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.load_settings()
 
         self.timer = None
-
-        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaledToWidth(self.ui.studlyLabel.width()))
 
         self.ui.loginButton.clicked.connect(self.login_user)
         self.ui.show.stateChanged.connect(self.show_hide_password)
@@ -35,9 +32,6 @@ class Login(QMainWindow):
                              "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
         self.redStyle = ("border: 2px solid red; border-style: solid; "
                          "background-color: rgba(69, 119, 108, 125); border-radius: 5px;")
-
-        self.ui.studlyLabel.setPixmap(QPixmap(":/icons/icon.png").scaled(self.ui.studlyLabel.size(),
-                                                                         Qt.KeepAspectRatio))
 
     def load_settings(self):
         settings = QSettings('studly', 'studly')

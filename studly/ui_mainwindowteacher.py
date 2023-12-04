@@ -137,6 +137,7 @@ class Ui_MainWindow(object):
         self.userInfo = QLabel(self.buttonsMenuWidget)
         self.userInfo.setObjectName(u"userInfo")
         self.userInfo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userInfo.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.userInfoContainer.addWidget(self.userInfo)
 
@@ -147,10 +148,16 @@ class Ui_MainWindow(object):
         self.userIcon.setObjectName(u"userIcon")
         self.userIcon.setMinimumSize(QSize(60, 60))
         self.userIcon.setMaximumSize(QSize(60, 60))
+        font1 = QFont()
+        font1.setPointSize(14)
+        font1.setBold(True)
+        self.userIcon.setFont(font1)
         self.userIcon.setStyleSheet(u"border-style: solid;\n"
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
-"border-radius: 30%;")
+"border-radius: 30%;\n"
+"color: rgb(255, 255, 255);")
+        self.userIcon.setAlignment(Qt.AlignCenter)
 
         self.profileContainer.addWidget(self.userIcon, 0, 1, 1, 1)
 
@@ -188,6 +195,6 @@ class Ui_MainWindow(object):
         self.membersButton.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0427\u0410\u0421\u041d\u0418\u041a\u0418", None))
         self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u041e\u0422\u0410\u0422\u041a\u0418", None))
         self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
-        self.userIcon.setText("")
+        self.userIcon.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0428", None))
     # retranslateUi
 

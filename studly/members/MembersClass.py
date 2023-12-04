@@ -1,9 +1,9 @@
-from members.GroupViewer import InstituteViewer, GroupUser
-from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QWidget, QLabel
-from members.ui_MembersClass import Ui_Form
-from PySide6.QtGui import QFont, QIcon
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QFont, QIcon
+from members.GroupViewer import InstituteViewer, GroupUser
+from members.ui_MembersClass import Ui_Form
+from DB.connect_to_db import connect_to_database
 
 
 class MembersClass(QWidget):

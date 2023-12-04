@@ -7,8 +7,7 @@
 # (requirements.txt должен лежать в папке с проектом)
 # pip install PySide6
 
-# EXE: pyinstaller -F -w main.py
-
+# EXE: pyinstaller -F -w --icon=icon.ico  main.py
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or

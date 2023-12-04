@@ -268,6 +268,9 @@ color: rgb(239, 241, 237);</string>
                 <property name="cursor">
                  <cursorShape>PointingHandCursor</cursorShape>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
                 <property name="text">
                  <string>Група</string>
                 </property>
@@ -289,14 +292,24 @@ color: rgb(239, 241, 237);</string>
                 <height>60</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">border-style: solid;
 border-width: 5px;
 border-color: rgb(32, 69, 71);
-border-radius: 30%;</string>
+border-radius: 30%;
+color: rgb(255, 255, 255);</string>
               </property>
               <property name="text">
-               <string/>
+               <string>АШ</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>

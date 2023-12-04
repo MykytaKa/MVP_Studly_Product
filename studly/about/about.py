@@ -1,6 +1,6 @@
 from PySide6 import QtWidgets
-from about.ui_about import Ui_Dialog
 from PySide6.QtGui import QIcon
+from about.ui_about import Ui_Dialog
 
 
 class About(QtWidgets.QDialog):
