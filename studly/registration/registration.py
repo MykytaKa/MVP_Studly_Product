@@ -1,15 +1,16 @@
-import re
-from DB.connect_to_db import connect_to_database
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtCore import QTimer
 from registration.ui_registration import Ui_MainWindow as UIregistration
 from registration.ui_stud_registration import Ui_MainWindow as UIstud_registration
 from registration.ui_teach_registration import Ui_MainWindow as UIteach_registration
+import re
+from DB.connect_to_db import connect_to_database
 
 
 class RegistrationWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.window = None
         self.setWindowTitle("Registration")
         self.ui = UIregistration()
         self.ui.setupUi(self)
@@ -185,7 +186,6 @@ class RegistrationWindow(QMainWindow):
                 self.user['email'], self.user['password'], self.user['status'])
         cursor.execute('INSERT INTO users (first_name, last_name, patronymic, phone_number, email, password, status) '
                        'VALUES (?, ?, ?, ?, ?, ?, ?)', data)
-
 
         self.user_id = cursor.lastrowid
 

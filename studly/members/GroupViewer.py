@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QWidget, QFrame, QLabel, QVBoxLayout, QGridLayout, QHBoxLayout, QSpacerItem, QSizePolicy
-from DB.connect_to_db import connect_to_database
 from PySide6.QtGui import QFont, QPixmap
 from PySide6.QtCore import Signal, Qt
+from DB.connect_to_db import connect_to_database
 
 
 class GroupLabel(QWidget):

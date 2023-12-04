@@ -1,10 +1,9 @@
-# This Python file uses the following encoding: utf-8
-#from PySide6.QtCore import
 from PySide6.QtWidgets import QPushButton, QDialog, QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QSpacerItem
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
 from datetime import datetime, timedelta
 from consts import weekDayCoefficient, translatedFullMonth
-from PySide6.QtGui import QIcon
+
 
 class QDateButton(QPushButton):
     def __init__(self, parent=None):
@@ -17,8 +16,6 @@ class QDateButton(QPushButton):
                               color: rgb(32, 69, 71);
                               border-style: none;''')
         self.setCursor(Qt.PointingHandCursor)
-
-
 
     def set_day(self, new_day):
         self.setText(new_day)
@@ -39,7 +36,7 @@ class QDateButton(QPushButton):
     def get_year(self):
         return self.year
 
-#
+
 class DateDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -94,7 +91,9 @@ class DateDialog(QDialog):
 
         # Кнопка відправленя обраної дати
         self.button_ok = QPushButton('OK')
-        self.button_ok.setStyleSheet('border-radius: 10px;\nborder-style: solid;\nborder-color: rgb(69, 119, 108);\nborder-width: 2px;\nbackground-color: rgb(32, 69, 71);\ncolor: rgb(239, 241, 237);')
+        self.button_ok.setStyleSheet(
+            'border-radius: 10px;\nborder-style: solid;\nborder-color: rgb(69, 119, 108);\nborder-width: 2px;'
+            '\nbackground-color: rgb(32, 69, 71);\ncolor: rgb(239, 241, 237);')
         self.button_ok.setCursor(Qt.PointingHandCursor)
         self.button_ok.clicked.connect(self.accept)
 
@@ -119,10 +118,10 @@ class DateDialog(QDialog):
 
     def initialize_buttons(self):
         for week in range(1, 7):
-            for day in range (1, 8):
+            for day in range(1, 8):
                 date_button = QDateButton()
                 date_button.clicked.connect(lambda checked=True, button=date_button: self.light_date(button))
-                self.days_container.addWidget(date_button, week-1, day-1)
+                self.days_container.addWidget(date_button, week - 1, day - 1)
 
     def set_dates(self):
         current_month_first_day = datetime.strptime(f'01.{self.current_month}.{self.current_year}', '%d.%m.%Y')
@@ -134,9 +133,9 @@ class DateDialog(QDialog):
         coeff = weekDayCoefficient[current_day]
         first_calendar_day = current_month_first_day + timedelta(days=coeff)
         for week in range(1, 7):
-            for day in range (1, 8):
-                day_date = first_calendar_day + timedelta(days=day-1, weeks=week-1)
-                date_button = self.days_container.itemAtPosition(week-1, day-1).widget()
+            for day in range(1, 8):
+                day_date = first_calendar_day + timedelta(days=day - 1, weeks=week - 1)
+                date_button = self.days_container.itemAtPosition(week - 1, day - 1).widget()
                 date_button.set_day(day_date.strftime('%d'))
                 date_button.set_month(day_date.strftime('%m'))
                 date_button.set_year(day_date.strftime('%Y'))
@@ -164,7 +163,8 @@ class DateDialog(QDialog):
             for j in range(7):
                 date_button = self.days_container.itemAtPosition(i, j).widget()
 
-                if f'{date_button.get_day()}.{date_button.get_month()}.{date_button.get_year()}' == datetime.now().strftime('%d.%m.%Y'):
+                if (f'{date_button.get_day()}.{date_button.get_month()}.{date_button.get_year()}' ==
+                        datetime.now().strftime('%d.%m.%Y')):
                     date_button.setStyleSheet('''background-color: rgb(32, 69, 71);\n
                                                  color: rgb(239, 241, 237);\n
                                                  border-style: none;''')
@@ -173,7 +173,8 @@ class DateDialog(QDialog):
                                                  color: rgba(32, 69, 71, 150);
                                                  border-style: none;''')
                 else:
-                    date_button.setStyleSheet('background-color: rgb(239, 241, 237);\ncolor: rgb(32, 69, 71);\nborder-style: none;')
+                    date_button.setStyleSheet('background-color: rgb(239, 241, 237);'
+                                              '\ncolor: rgb(32, 69, 71);\nborder-style: none;')
 
     def move_date(self, button):
         if button == self.prev_month_button:
@@ -192,5 +193,3 @@ class DateDialog(QDialog):
         self.month_label.setText(translatedFullMonth[current_date.strftime('%B')])
         self.year_label.setText(f'{self.current_year}')
         self.set_dates()
-
-

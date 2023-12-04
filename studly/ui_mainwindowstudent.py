@@ -56,6 +56,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.logoLabel = QLabel(self.buttonsMenuWidget)
         self.logoLabel.setObjectName(u"logoLabel")
+        self.logoLabel.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout.addWidget(self.logoLabel)
 
@@ -84,30 +85,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.lecturesButton = QPushButton(self.buttonsMenuWidget)
-        self.lecturesButton.setObjectName(u"lecturesButton")
-        self.lecturesButton.setMinimumSize(QSize(120, 40))
-        self.lecturesButton.setMaximumSize(QSize(500, 40))
-        font1 = QFont()
-        font1.setPointSize(12)
-        self.lecturesButton.setFont(font1)
-        self.lecturesButton.setStyleSheet(u"border-style: solid;\n"
-"border-color: rgb(32, 69, 71);\n"
-"border-width: 5px;\n"
-"border-radius: 10px;\n"
-"background-color: rgb(55, 95, 86);\n"
-"color: rgb(239, 241, 237);")
-
-        self.horizontalLayout.addWidget(self.lecturesButton)
-
-        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
-
-        self.horizontalLayout.addItem(self.horizontalSpacer_2)
-
         self.membersButton = QPushButton(self.buttonsMenuWidget)
         self.membersButton.setObjectName(u"membersButton")
         self.membersButton.setMinimumSize(QSize(120, 40))
         self.membersButton.setMaximumSize(QSize(500, 40))
+        font1 = QFont()
+        font1.setPointSize(12)
         self.membersButton.setFont(font1)
         self.membersButton.setStyleSheet(u"border-style: solid;\n"
 "border-color: rgb(32, 69, 71);\n"
@@ -146,23 +129,26 @@ class Ui_MainWindow(object):
         self.userIcon.setObjectName(u"userIcon")
         self.userIcon.setMinimumSize(QSize(60, 60))
         self.userIcon.setMaximumSize(QSize(60, 60))
+        font2 = QFont()
+        font2.setPointSize(14)
+        font2.setBold(True)
+        self.userIcon.setFont(font2)
         self.userIcon.setStyleSheet(u"border-style: solid;\n"
 "border-width: 5px;\n"
 "border-color: rgb(32, 69, 71);\n"
-"border-radius: 30%;")
+"border-radius: 30%;\n"
+"color: rgb(255, 255, 255);")
+        self.userIcon.setAlignment(Qt.AlignCenter)
 
         self.profileContainer.addWidget(self.userIcon, 0, 0, 1, 1)
 
         self.userInfoContainer = QVBoxLayout()
         self.userInfoContainer.setSpacing(0)
         self.userInfoContainer.setObjectName(u"userInfoContainer")
-        self.userFullname = QLabel(self.buttonsMenuWidget)
-        self.userFullname.setObjectName(u"userFullname")
-
-        self.userInfoContainer.addWidget(self.userFullname)
-
         self.userInfo = QLabel(self.buttonsMenuWidget)
         self.userInfo.setObjectName(u"userInfo")
+        self.userInfo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userInfo.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.userInfoContainer.addWidget(self.userInfo)
 
@@ -204,11 +190,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Student", None))
         self.logoLabel.setText("")
         self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u041e\u0417\u041a\u041b\u0410\u0414", None))
-        self.lecturesButton.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0415\u041a\u0426\u0406\u0407", None))
         self.membersButton.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0427\u0410\u0421\u041d\u0418\u041a\u0418", None))
         self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u041e\u0422\u0410\u0422\u041a\u0418", None))
-        self.userIcon.setText("")
-        self.userFullname.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435 \u0406.\u041f.", None))
+        self.userIcon.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0428", None))
         self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
     # retranslateUi
 

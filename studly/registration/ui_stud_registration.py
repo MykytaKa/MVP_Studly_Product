@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QHBoxLayout,
     QLabel, QLayout, QMainWindow, QPushButton,
     QSizePolicy, QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -26,6 +27,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         MainWindow.setMinimumSize(QSize(800, 600))
         MainWindow.setMaximumSize(QSize(800, 600))
+        icon = QIcon()
+        icon.addFile(u":/icons/student.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"background-color: rgb(32, 69, 71);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")

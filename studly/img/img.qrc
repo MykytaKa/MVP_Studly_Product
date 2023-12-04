@@ -23,5 +23,15 @@
         <file>clean.png</file>
         <file>homePage.png</file>
         <file>search.png</file>
+        <file>department.png</file>
+        <file>univeristy.png</file>
+        <file>position.png</file>
+        <file>mail.png</file>
+        <file>telephone.png</file>
+        <file>camera.png</file>
+        <file>exit.png</file>
+        <file>edit.png</file>
+        <file>edit_dark.png</file>
+        <file>group.png</file>
     </qresource>
 </RCC>
