@@ -116,18 +116,16 @@ class Login(QMainWindow):
             print(f'Successful authentication, welcome {authentication_result["first_name"]}!')
             print(f'{authentication_result}')
 
-            self.close()
-
             if authentication_result["status"] == 'teacher':
-                self.appWindow = MainWindowTeacher(authentication_result)
+                self.appWindow = MainWindowTeacher(authentication_result, self)
 
             elif authentication_result["status"] == 'student':
-                self.appWindow = MainWindowStudent(authentication_result)
+                self.appWindow = MainWindowStudent(authentication_result, self)
 
             else:
-                print('error')
                 return
 
+            self.close()
             self.appWindow.show()
 
         else:

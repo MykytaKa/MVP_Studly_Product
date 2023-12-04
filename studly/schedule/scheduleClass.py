@@ -15,6 +15,7 @@ class ScheduleClass(QWidget):
         self.ui.setupUi(self)
 
         self.class_id = self.get_class_id(user_id)
+        self.set_class_name(user_id)
 
         self.dateMovement = 0
 
@@ -53,6 +54,12 @@ class ScheduleClass(QWidget):
             return class_id
         else:
             return None
+
+    @connect_to_database
+    def set_class_name(cursor, self, user_id):
+        cursor.execute('SELECT classes.name FROM students JOIN classes ON students.class_id = classes.id WHERE students.user_id = ?', (user_id,))
+        result = cursor.fetchone()
+        self.ui.groupLabel.setText(result[0])
 
     def set_chosen_date(self):
         date_dialog = DateDialog()

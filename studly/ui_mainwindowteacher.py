@@ -92,24 +92,6 @@ class Ui_MainWindow(object):
 
         self.buttonsMenu.addItem(self.horizontalSpacer)
 
-        self.lecturesButton = QPushButton(self.buttonsMenuWidget)
-        self.lecturesButton.setObjectName(u"lecturesButton")
-        self.lecturesButton.setMinimumSize(QSize(120, 40))
-        self.lecturesButton.setMaximumSize(QSize(500, 40))
-        self.lecturesButton.setFont(font)
-        self.lecturesButton.setStyleSheet(u"border-style: solid;\n"
-"border-color: rgb(32, 69, 71);\n"
-"border-width: 5px;\n"
-"border-radius: 10px;\n"
-"background-color: rgb(55, 95, 86);\n"
-"color: rgb(239, 241, 237);")
-
-        self.buttonsMenu.addWidget(self.lecturesButton)
-
-        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
-
-        self.buttonsMenu.addItem(self.horizontalSpacer_2)
-
         self.membersButton = QPushButton(self.buttonsMenuWidget)
         self.membersButton.setObjectName(u"membersButton")
         self.membersButton.setMinimumSize(QSize(120, 40))
@@ -152,13 +134,9 @@ class Ui_MainWindow(object):
         self.userInfoContainer = QVBoxLayout()
         self.userInfoContainer.setSpacing(0)
         self.userInfoContainer.setObjectName(u"userInfoContainer")
-        self.userFullname = QLabel(self.buttonsMenuWidget)
-        self.userFullname.setObjectName(u"userFullname")
-
-        self.userInfoContainer.addWidget(self.userFullname)
-
         self.userInfo = QLabel(self.buttonsMenuWidget)
         self.userInfo.setObjectName(u"userInfo")
+        self.userInfo.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.userInfoContainer.addWidget(self.userInfo)
 
@@ -207,10 +185,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Teacher", None))
         self.logoLabel.setText("")
         self.scheduleButton.setText(QCoreApplication.translate("MainWindow", u"\u0420\u041e\u0417\u041a\u041b\u0410\u0414", None))
-        self.lecturesButton.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0415\u041a\u0426\u0406\u0407", None))
         self.membersButton.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0427\u0410\u0421\u041d\u0418\u041a\u0418", None))
         self.notesButton.setText(QCoreApplication.translate("MainWindow", u"\u041d\u041e\u0422\u0410\u0422\u041a\u0418", None))
-        self.userFullname.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435 \u0406.\u041f.", None))
         self.userInfo.setText(QCoreApplication.translate("MainWindow", u"\u0413\u0440\u0443\u043f\u0430", None))
         self.userIcon.setText("")
     # retranslateUi

@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Реєстрація</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../img/img.qrc">
+    <normaloff>:/icons/student.png</normaloff>:/icons/student.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(32, 69, 71);</string>
   </property>
@@ -223,6 +227,8 @@ border-radius: 10px;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../img/img.qrc"/>
+ </resources>
  <connections/>
 </ui>

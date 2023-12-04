@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QFormLayout, QGridLayout, QHBoxLayo
     QLabel, QLayout, QLineEdit, QMainWindow,
     QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
+import rc_img
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -28,6 +29,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         MainWindow.setMinimumSize(QSize(800, 600))
         MainWindow.setMaximumSize(QSize(800, 600))
+        icon = QIcon()
+        icon.addFile(u":/icons/exe_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"background-color: rgb(32, 69, 71);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -79,23 +83,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.errorLabel)
 
-        self.label = QLabel(self.widget)
-        self.label.setObjectName(u"label")
-
-        self.verticalLayout.addWidget(self.label)
-
-        self.nameEdit = QLineEdit(self.widget)
-        self.nameEdit.setObjectName(u"nameEdit")
-        self.nameEdit.setMinimumSize(QSize(0, 30))
-        self.nameEdit.setStyleSheet(u"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-color: rgb(69, 119, 108);\n"
-"background-color: rgba(69, 119, 108, 125);\n"
-"border-radius: 10px;")
-        self.nameEdit.setMaxLength(25)
-
-        self.verticalLayout.addWidget(self.nameEdit)
-
         self.label_2 = QLabel(self.widget)
         self.label_2.setObjectName(u"label_2")
 
@@ -112,6 +99,23 @@ class Ui_MainWindow(object):
         self.surnameEdit.setMaxLength(25)
 
         self.verticalLayout.addWidget(self.surnameEdit)
+
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout.addWidget(self.label)
+
+        self.nameEdit = QLineEdit(self.widget)
+        self.nameEdit.setObjectName(u"nameEdit")
+        self.nameEdit.setMinimumSize(QSize(0, 30))
+        self.nameEdit.setStyleSheet(u"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-color: rgb(69, 119, 108);\n"
+"background-color: rgba(69, 119, 108, 125);\n"
+"border-radius: 10px;")
+        self.nameEdit.setMaxLength(25)
+
+        self.verticalLayout.addWidget(self.nameEdit)
 
         self.label_7 = QLabel(self.widget)
         self.label_7.setObjectName(u"label_7")
@@ -259,9 +263,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f", None))
         self.errorLabel.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u0406\u043c'\u044f", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0456\u0437\u0432\u0438\u0449\u0435", None))
         self.surnameEdit.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u0406\u043c'\u044f", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e \u0431\u0430\u0442\u044c\u043a\u043e\u0432\u0456", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Email", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043b\u0435\u0444\u043e\u043d", None))

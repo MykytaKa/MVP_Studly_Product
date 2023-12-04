@@ -29,6 +29,10 @@
         "members/MembersClass.py",
         "members/MembersClass.ui",
         "members/GroupViewer.py",
-        "members/ui_MembersClass.py"
+        "members/ui_MembersClass.py",
+        "userAccount/userAccountStudent.py",
+        "userAccount/userAccountStudent.ui",
+        "userAccount/userAccountTeacher.py",
+        "userAccount/userAccountTeacher.ui"
     ]
 }

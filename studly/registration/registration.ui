@@ -28,6 +28,10 @@
   <property name="windowTitle">
    <string>Реєстрація</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../img/img.qrc">
+    <normaloff>:/icons/exe_icon.png</normaloff>:/icons/exe_icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(32, 69, 71);</string>
   </property>
@@ -132,33 +136,6 @@ border-radius: 20px;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Ім'я</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="nameEdit">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border-style: solid;
-border-width: 2px;
-border-color: rgb(69, 119, 108);
-background-color: rgba(69, 119, 108, 125);
-border-radius: 10px;</string>
-             </property>
-             <property name="maxLength">
-              <number>25</number>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
               <string>Прізвище</string>
@@ -182,6 +159,33 @@ border-radius: 10px;</string>
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="maxLength">
+              <number>25</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Ім'я</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="nameEdit">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border-style: solid;
+border-width: 2px;
+border-color: rgb(69, 119, 108);
+background-color: rgba(69, 119, 108, 125);
+border-radius: 10px;</string>
              </property>
              <property name="maxLength">
               <number>25</number>
@@ -425,6 +429,8 @@ border-radius: 10px;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../img/img.qrc"/>
+ </resources>
  <connections/>
 </ui>
